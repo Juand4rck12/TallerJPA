@@ -5,6 +5,20 @@
     <artifactId>StockClem</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <description>Taller JPA</description>
+    <organization>
+        <name>SENA</name>
+    </organization>
+    <developers>
+        <developer>
+            <name>Juan Diego Orrego Vargas</name>
+            <email>juan.orrego1@soy.sena.edu.co</email>
+        </developer>
+        <developer>
+            <name>Esteban Colorado Vargas</name>
+            <email>esteban_coloradov@soy.sena.edu.co</email>
+        </developer>
+    </developers>
     <dependencies>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
