@@ -11,6 +11,6 @@ public interface ISupplierDAO {
     public void insert(Supplier supplier) throws Exception;
     public void update(Supplier supplier) throws Exception;
     public void delete(Supplier supplier) throws Exception;
-    public Supplier findById(long id) throws Exception;
+    public Supplier findById(Long id) throws Exception;
     public List<Supplier> findAll() throws Exception;
 }

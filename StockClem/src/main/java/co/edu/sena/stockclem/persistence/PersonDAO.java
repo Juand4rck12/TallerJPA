@@ -37,7 +37,7 @@ public class PersonDAO implements IPersonDAO{
     }
 
     @Override
-    public Person findById(long id) throws Exception {
+    public Person findById(Long id) throws Exception {
         try {
             return EntityManagerHelper.getEntityManager().find(Person.class, id);
         } catch (RuntimeException e) {

@@ -37,7 +37,7 @@ public class SupplierDAO implements ISupplierDAO {
     }
 
     @Override
-    public Supplier findById(long id) throws Exception {
+    public Supplier findById(Long id) throws Exception {
         try {
             return EntityManagerHelper.getEntityManager().find(Supplier.class, id);
         } catch (RuntimeException e) {

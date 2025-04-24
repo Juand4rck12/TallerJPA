@@ -37,7 +37,7 @@ public class EntryDAO implements IEntryDAO{
     }
 
     @Override
-    public Entry findById(long id) throws Exception {
+    public Entry findById(Long id) throws Exception {
         try {
             return EntityManagerHelper.getEntityManager().find(Entry.class, id);
         } catch (RuntimeException e) {
