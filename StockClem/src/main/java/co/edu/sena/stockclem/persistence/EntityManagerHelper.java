@@ -1,4 +1,4 @@
-package co.edu.sena.examplemvcjpa.persistence;
+package co.edu.sena.stockclem.persistence;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
