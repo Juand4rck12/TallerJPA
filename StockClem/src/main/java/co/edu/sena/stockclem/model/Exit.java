@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author victus
  */
 @Entity
-@Table(name = "exit")
+@Table(name = "`exit`")
 @NamedQueries({
     @NamedQuery(name = "Exit.findAll", query = "SELECT e FROM Exit e"),
     @NamedQuery(name = "Exit.findByIdExit", query = "SELECT e FROM Exit e WHERE e.idExit = :idExit"),

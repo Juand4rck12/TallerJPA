@@ -50,6 +50,7 @@ public class PersonController implements IPersonController{
             throw new Exception("La persona no existe...");
         }
         // ACTUALIZAR
+        personExits.setDocument(person.getDocument());
         personExits.setName(person.getName());
         personExits.setPhone(person.getPhone());
         EntityManagerHelper.beginTransaction();

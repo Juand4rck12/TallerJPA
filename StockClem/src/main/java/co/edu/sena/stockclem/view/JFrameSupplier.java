@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package co.edu.sena.stockclem.view;
 
 import co.edu.sena.stockclem.controller.ISupplierController;
@@ -42,7 +38,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelBackGround = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
         jPanelCloseWindow = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelCloseWindow = new javax.swing.JLabel();
         jLabelId = new javax.swing.JLabel();
         jLabelNameSupplier = new javax.swing.JLabel();
         jLabelPhoneSupplier = new javax.swing.JLabel();
@@ -73,15 +69,25 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCloseWindow.setPreferredSize(new java.awt.Dimension(50, 50));
 
+<<<<<<< HEAD
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/icono de casa.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+=======
+        jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
+        jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCloseWindowMouseClicked(evt);
+            }
+>>>>>>> 7a1881c22ddd4be8de381419fc9253ba8c2716eb
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
+                jLabelCloseWindowMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel1MouseExited(evt);
+                jLabelCloseWindowMouseExited(evt);
             }
         });
 
@@ -89,14 +95,18 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
         jPanelCloseWindowLayout.setHorizontalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+>>>>>>> 7a1881c22ddd4be8de381419fc9253ba8c2716eb
         );
         jPanelCloseWindowLayout.setVerticalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
+        jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelId.setForeground(new java.awt.Color(0, 0, 0));
@@ -167,6 +177,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -254,15 +265,15 @@ public class JFrameSupplier extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_jPanelHeaderMousePressed
 
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+    private void jLabelCloseWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseEntered
         // BOTON EFECTO HOVER
-        jPanelCloseWindow.setBackground(Color.RED);
-    }//GEN-LAST:event_jLabel1MouseEntered
+        jPanelCloseWindow.setBackground(Color.BLUE);
+    }//GEN-LAST:event_jLabelCloseWindowMouseEntered
 
-    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+    private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
         // TBOTON PARA EFECTO HOVER DE SALIDA
         jPanelCloseWindow.setBackground(Color.white);
-    }//GEN-LAST:event_jLabel1MouseExited
+    }//GEN-LAST:event_jLabelCloseWindowMouseExited
 
     private void jTextFieldPhoneSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneSupplierActionPerformed
         // TODO add your handling code here:
@@ -313,6 +324,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         // BOTON PARA ACTUALIZAR
         try {
             Supplier supplier = new Supplier();
+            supplier.setIdUnit(Long.valueOf(jTextFieldIdSupplier.getText()));
             supplier.setName(jTextFieldNameSupplier.getText());
             supplier.setPhone(jTextFieldPhoneSupplier.getText());
             supplierController.update(supplier);
@@ -340,6 +352,15 @@ public class JFrameSupplier extends javax.swing.JFrame {
             MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar proovedor..." + e.getMessage());
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
+        //BOTON PARA CERRAR
+        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
+        if(option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabelCloseWindowMouseClicked
 
     /**
      * @param args the command line arguments
@@ -415,8 +436,8 @@ public class JFrameSupplier extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelCloseWindow;
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelNameSupplier;
     private javax.swing.JLabel jLabelPhoneSupplier;

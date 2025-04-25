@@ -176,7 +176,7 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.stockclem.model.Article[ idArticle=" + idArticle + " ]";
+        return name;
     }
     
 }
