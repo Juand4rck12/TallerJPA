@@ -457,7 +457,7 @@ public class JFrameEntry extends javax.swing.JFrame {
                 rows[2] = ConvertUtils.dateToString(entry.getDate());
                 rows[3] = ConvertUtils.dateToString(entry.getExpirationDate());
                 rows[4] = String.valueOf(entry.getQuantity());
-                rows[5] = String.valueOf(entry.getIdArticle().getIdArticle());
+                rows[5] = entry.getIdArticle().getName();
                 model.addRow(rows);
             }
             jButtonInsert.setEnabled(true);
@@ -477,7 +477,7 @@ public class JFrameEntry extends javax.swing.JFrame {
             modelEmployee.addAll(entry);
             
             // Establecer selección vacía inicialmente
-            jComboBoxIdArticle.setSelectedIndex(-1); // Ningún elemento seleccionado
+            jComboBoxIdArticle.setSelectedIndex(0); // Ningún elemento seleccionado
 
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
