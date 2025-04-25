@@ -6,7 +6,7 @@ package co.edu.sena.stockclem.view;
 
 /**
  *
- * @author Juan Alejandro
+ * @author Juan diego Orrego
  */
 public class JFramePresentation extends javax.swing.JFrame {
 

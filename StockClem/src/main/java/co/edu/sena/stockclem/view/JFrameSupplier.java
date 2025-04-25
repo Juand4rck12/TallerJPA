@@ -4,17 +4,30 @@
  */
 package co.edu.sena.stockclem.view;
 
+import co.edu.sena.stockclem.controller.ISupplierController;
+import co.edu.sena.stockclem.controller.SupplierController;
+import co.edu.sena.stockclem.model.Supplier;
+import co.edu.sena.stockclem.utils.MessageUtils;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Esteban Colorado Vargas
  */
 public class JFrameSupplier extends javax.swing.JFrame {
+    private final ISupplierController supplierController = new SupplierController();
+    int xMouse;
+    int yMouse;
 
     /**
      * Creates new form JFrameSupplier
      */
     public JFrameSupplier() {
         initComponents();
+        fillTable();
     }
 
     /**
@@ -26,21 +39,299 @@ public class JFrameSupplier extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelBackGround = new javax.swing.JPanel();
+        jLabelTitle = new javax.swing.JLabel();
+        jPanelCloseWindow = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
+        jLabelNameSupplier = new javax.swing.JLabel();
+        jLabelPhoneSupplier = new javax.swing.JLabel();
+        jTextFieldIdSupplier = new javax.swing.JTextField();
+        jTextFieldNameSupplier = new javax.swing.JTextField();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextFieldPhoneSupplier = new javax.swing.JTextField();
+        jButtonInsert = new javax.swing.JButton();
+        jLabelBackground = new javax.swing.JLabel();
+        jPanelHeader = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(780, 470));
+        setResizable(false);
+
+        jPanelBackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitle.setText("TABLA PROOVEDORES");
+        jPanelBackGround.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, 30));
+
+        jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelCloseWindow.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCloseWindowLayout = new javax.swing.GroupLayout(jPanelCloseWindow);
+        jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
+        jPanelCloseWindowLayout.setHorizontalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+        jPanelCloseWindowLayout.setVerticalGroup(
+            jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
+
+        jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelId.setText("ID:");
+        jPanelBackGround.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+
+        jLabelNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelNameSupplier.setText("NOMBRE DEL PROOVEDOR:");
+        jPanelBackGround.add(jLabelNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+
+        jLabelPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelPhoneSupplier.setText("TELEFONO DEL PROOVEDOR:");
+        jPanelBackGround.add(jLabelPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+
+        jTextFieldIdSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanelBackGround.add(jTextFieldIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, -1));
+
+        jTextFieldNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanelBackGround.add(jTextFieldNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 220, -1));
+
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setBorderPainted(false);
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBorderPainted(false);
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, -1));
+
+        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonClear.setText("LIMPIAR");
+        jButtonClear.setBorderPainted(false);
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+
+        jTable1.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanelBackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 740, 170));
+
+        jTextFieldPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jTextFieldPhoneSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPhoneSupplierActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jTextFieldPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 220, -1));
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Fondo para menu opcion1.png"))); // NOI18N
+        jPanelBackGround.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
+
+        jPanelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMouseDragged(evt);
+            }
+        });
+        jPanelHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelHeaderMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelHeaderLayout = new javax.swing.GroupLayout(jPanelHeader);
+        jPanelHeader.setLayout(jPanelHeaderLayout);
+        jPanelHeaderLayout.setHorizontalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+        jPanelHeaderLayout.setVerticalGroup(
+            jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanelBackGround.add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanelBackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanelBackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
+        // EVENTO PARA MOVER LA PESTAÑA
+        int xPosition = evt.getXOnScreen();
+        int yPosition = evt.getYOnScreen();
+        
+        this.setLocation(xPosition - xMouse, yPosition - yMouse);
+    }//GEN-LAST:event_jPanelHeaderMouseDragged
+
+    private void jPanelHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMousePressed
+        // EVENTO COMPLEMETNARIO PARA MOVER LA PESTAÑA
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanelHeaderMousePressed
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // BOTON EFECTO HOVER
+        jPanelCloseWindow.setBackground(Color.RED);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        // TBOTON PARA EFECTO HOVER DE SALIDA
+        jPanelCloseWindow.setBackground(Color.white);
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jTextFieldPhoneSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneSupplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPhoneSupplierActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // EVENTO PARA EL CLICK EN LA TABLA
+        int rowSelected = jTable1.getSelectedRow();
+        if (rowSelected != -1) {
+            Long documentSelected = Long.valueOf(jTable1.getValueAt(rowSelected, 0).toString());
+            try {
+                Supplier supplier = supplierController.findById(documentSelected);
+                jTextFieldIdSupplier.setText(String.valueOf(documentSelected));
+                jTextFieldNameSupplier.setText(supplier.getName());
+                jTextFieldPhoneSupplier.setText(supplier.getPhone());
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
+                    + e.getMessage());
+            }
+        }
+        jButtonInsert.setEnabled(false);
+        jButtonDelete.setEnabled(true);
+        jButtonUpdate.setEnabled(true);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        // BOTON PARA LIMPIAR
+        clear();
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        // BOTONN PARA INSERTAR
+        try {
+            Supplier supplier = new Supplier();
+            supplier.setName(jTextFieldNameSupplier.getText());
+            supplier.setPhone(jTextFieldPhoneSupplier.getText());
+            supplierController.insert(supplier);
+            MessageUtils.showInfoMessage("El proovedor se ha añadido correctamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar el proovedor..."
+                + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // BOTON PARA ACTUALIZAR
+        try {
+            Supplier supplier = new Supplier();
+            supplier.setName(jTextFieldNameSupplier.getText());
+            supplier.setPhone(jTextFieldPhoneSupplier.getText());
+            supplierController.update(supplier);
+            MessageUtils.showInfoMessage("El proovedor se ha actualizado correctamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar el proovedor..."
+                + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // BOTON PARA ELIMINAR
+         try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                supplierController.delete(Long.valueOf(jTextFieldIdSupplier.getText()));
+                MessageUtils.showInfoMessage("Proovedor eliminado correctamente...");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar proovedor..." + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,7 +367,59 @@ public class JFrameSupplier extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void fillTable() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jTable1.setModel(model);
+            model.addColumn("Documento");
+            model.addColumn("Nombre Proovedor");
+            model.addColumn("telefono Proovedor");
+
+            String[] rows = new String[3];
+            List<Supplier> suppliers = supplierController.findAll();
+            for (Supplier supplier : suppliers) {
+                rows[0] = String.valueOf(supplier.getIdUnit());
+                rows[1] = supplier.getName();
+                rows[2] = supplier.getPhone();
+                model.addRow(rows);
+            }
+            jButtonInsert.setEnabled(true);
+            jButtonUpdate.setEnabled(false);
+            jButtonDelete.setEnabled(false);
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al llenar la tabla..."
+                    + e.getMessage());
+        }
+    }
+    
+    public void clear() {
+        jTextFieldIdSupplier.setText("");
+        jTextFieldNameSupplier.setText("");
+        jTextFieldPhoneSupplier.setText("");
+        jButtonInsert.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jButtonUpdate.setEnabled(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelId;
+    private javax.swing.JLabel jLabelNameSupplier;
+    private javax.swing.JLabel jLabelPhoneSupplier;
+    private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JPanel jPanelBackGround;
+    private javax.swing.JPanel jPanelCloseWindow;
+    private javax.swing.JPanel jPanelHeader;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFieldIdSupplier;
+    private javax.swing.JTextField jTextFieldNameSupplier;
+    private javax.swing.JTextField jTextFieldPhoneSupplier;
     // End of variables declaration//GEN-END:variables
 }
