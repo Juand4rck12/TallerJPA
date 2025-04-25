@@ -23,15 +23,64 @@ public class JFramePresentation extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
+        jLabelDescription = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        jTextFieldDescription = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePresentation = new javax.swing.JTable();
+        jButtonInsert = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
+        jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
-        jLabel1.setText("TABLA PRESENTACIONES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+        jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
+        jLabelTitle.setText("TABLA PRESENTACIONES");
+        jPanel1.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+
+        jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelId.setText("ID:");
+        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        jLabelDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelDescription.setText("DESCRIPCIÓN:");
+        jPanel1.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 440, -1));
+        jPanel1.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 440, -1));
+
+        jTablePresentation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTablePresentation);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 610, 170));
+
+        jButtonInsert.setText("INSERTAR");
+        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 110, 30));
+
+        jButtonUpdate.setText("MODIFICAR");
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 110, 30));
+
+        jButtonDelete.setText("ELIMINAR");
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 110, 30));
+
+        jButtonClear.setText("LIMPIAR");
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 110, 30));
+        jPanel1.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +132,18 @@ public class JFramePresentation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelDescription;
+    private javax.swing.JLabel jLabelId;
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTablePresentation;
+    private javax.swing.JTextField jTextFieldDescription;
+    private javax.swing.JTextField jTextFieldId;
     // End of variables declaration//GEN-END:variables
 }
