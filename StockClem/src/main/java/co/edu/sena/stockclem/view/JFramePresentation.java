@@ -114,7 +114,7 @@ public class JFramePresentation extends javax.swing.JFrame {
         jPanelHome.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabelHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/icono de casa.png"))); // NOI18N
+        jLabelHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
         jLabelHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
