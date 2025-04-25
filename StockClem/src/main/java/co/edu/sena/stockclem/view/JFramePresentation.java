@@ -41,18 +41,21 @@ public class JFramePresentation extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitle.setText("TABLA PRESENTACIONES");
-        jPanel1.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel1.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelId.setForeground(new java.awt.Color(0, 0, 0));
         jLabelId.setText("ID:");
-        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         jLabelDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelDescription.setForeground(new java.awt.Color(0, 0, 0));
         jLabelDescription.setText("DESCRIPCIÓN:");
-        jPanel1.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
-        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 440, -1));
-        jPanel1.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 440, -1));
+        jPanel1.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 500, 30));
+        jPanel1.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 500, 30));
 
         jTablePresentation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,20 +70,38 @@ public class JFramePresentation extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTablePresentation);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 610, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 680, 170));
 
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonInsert.setForeground(new java.awt.Color(0, 0, 0));
         jButtonInsert.setText("INSERTAR");
-        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 110, 30));
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 30));
 
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 0));
         jButtonUpdate.setText("MODIFICAR");
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 110, 30));
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 130, 30));
 
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(0, 0, 0));
         jButtonDelete.setText("ELIMINAR");
-        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 110, 30));
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 130, 30));
 
+        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 110, 30));
-        jPanel1.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 450));
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 130, 30));
+
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Fondo para menu opcion1.png"))); // NOI18N
+        jPanel1.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
