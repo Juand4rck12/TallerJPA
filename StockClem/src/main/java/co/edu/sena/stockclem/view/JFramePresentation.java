@@ -2,7 +2,7 @@ package co.edu.sena.stockclem.view;
 
 /**
  *
- * @author Juan diego Orrego
+ * @author Juan Diego
  */
 public class JFramePresentation extends javax.swing.JFrame {
 
@@ -22,17 +22,96 @@ public class JFramePresentation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
+        jLabelDescription = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        jTextFieldDescription = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePresentation = new javax.swing.JTable();
+        jButtonInsert = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
+        jLabelBackground = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTitle.setText("TABLA PRESENTACIONES");
+        jPanel1.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+
+        jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelId.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelId.setText("ID:");
+        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        jLabelDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelDescription.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelDescription.setText("DESCRIPCIÓN:");
+        jPanel1.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 500, 30));
+        jPanel1.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 500, 30));
+
+        jTablePresentation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTablePresentation);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 680, 170));
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonInsert.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 30));
+
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonUpdate.setText("MODIFICAR");
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 130, 30));
+
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 130, 30));
+
+        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonClear.setText("LIMPIAR");
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 130, 30));
+
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Fondo para menu opcion1.png"))); // NOI18N
+        jPanel1.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -74,5 +153,18 @@ public class JFramePresentation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelDescription;
+    private javax.swing.JLabel jLabelId;
+    private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTablePresentation;
+    private javax.swing.JTextField jTextFieldDescription;
+    private javax.swing.JTextField jTextFieldId;
     // End of variables declaration//GEN-END:variables
 }

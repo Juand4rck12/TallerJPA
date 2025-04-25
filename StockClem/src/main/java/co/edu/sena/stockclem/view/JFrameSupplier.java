@@ -61,6 +61,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelBackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
+        jLabelTitle.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("TABLA PROOVEDORES");
         jPanelBackGround.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, 30));
@@ -97,25 +98,29 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelId.setForeground(new java.awt.Color(0, 0, 0));
         jLabelId.setText("ID:");
-        jPanelBackGround.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        jPanelBackGround.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jLabelNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelNameSupplier.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNameSupplier.setText("NOMBRE DEL PROOVEDOR:");
-        jPanelBackGround.add(jLabelNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+        jPanelBackGround.add(jLabelNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jLabelPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelPhoneSupplier.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPhoneSupplier.setText("TELEFONO DEL PROOVEDOR:");
-        jPanelBackGround.add(jLabelPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+        jPanelBackGround.add(jLabelPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         jTextFieldIdSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jPanelBackGround.add(jTextFieldIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, -1));
+        jPanelBackGround.add(jTextFieldIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 410, 30));
 
         jTextFieldNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jPanelBackGround.add(jTextFieldNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 220, -1));
+        jPanelBackGround.add(jTextFieldNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 410, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 0));
         jButtonUpdate.setText("ACTUALIZAR");
         jButtonUpdate.setBorderPainted(false);
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -124,10 +129,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+        jPanelBackGround.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, 30));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonDelete.setForeground(new java.awt.Color(0, 0, 0));
         jButtonDelete.setText("ELIMINAR");
         jButtonDelete.setBorderPainted(false);
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,10 +142,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, -1));
+        jPanelBackGround.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 30));
 
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
         jButtonClear.setBorderPainted(false);
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -148,7 +155,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+        jPanelBackGround.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 130, 30));
 
         jTable1.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -167,7 +174,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanelBackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 740, 170));
+        jPanelBackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 680, 160));
 
         jTextFieldPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextFieldPhoneSupplier.addActionListener(new java.awt.event.ActionListener() {
@@ -175,10 +182,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
                 jTextFieldPhoneSupplierActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jTextFieldPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 220, -1));
+        jPanelBackGround.add(jTextFieldPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 410, 30));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonInsert.setForeground(new java.awt.Color(0, 0, 0));
         jButtonInsert.setText("INSERTAR");
         jButtonInsert.setBorderPainted(false);
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -187,7 +195,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
                 jButtonInsertActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+        jPanelBackGround.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 130, 30));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Fondo para menu opcion1.png"))); // NOI18N
         jPanelBackGround.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
