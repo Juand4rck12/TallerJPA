@@ -74,7 +74,8 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelCloseWindow.setPreferredSize(new java.awt.Dimension(50, 50));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/icono de casa.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel1MouseEntered(evt);
@@ -88,7 +89,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
         jPanelCloseWindowLayout.setHorizontalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelCloseWindowLayout.setVerticalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
