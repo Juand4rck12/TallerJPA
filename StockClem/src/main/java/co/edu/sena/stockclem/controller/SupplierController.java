@@ -35,6 +35,9 @@ public class SupplierController implements ISupplierController{
         if(supplier == null) {
             throw new Exception("El proovedor es obligatorio...");
         }
+        if (supplier.getIdUnit() == null) {
+            throw new Exception("El id es obligatorio...") ;
+        }
         if ("".equals(supplier.getName())) {
             throw new Exception("El nombre del proovedor es obligatorio...");
         }

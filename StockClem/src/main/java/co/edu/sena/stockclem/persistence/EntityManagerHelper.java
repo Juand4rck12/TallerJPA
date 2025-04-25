@@ -7,12 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-
-/**
-*
-* @author Zathura Code Generator http://code.google.com/p/zathura
-*
-*/
 public class EntityManagerHelper {
     private static final EntityManagerFactory emf;
     private static final ThreadLocal<EntityManager> threadLocal;

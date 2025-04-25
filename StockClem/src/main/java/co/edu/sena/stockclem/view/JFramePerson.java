@@ -1,7 +1,8 @@
 package co.edu.sena.stockclem.view;
 
-import co.edu.sena.stockclem.controller.ISupplierController;
-import co.edu.sena.stockclem.controller.SupplierController;
+import co.edu.sena.stockclem.controller.IPersonController;
+import co.edu.sena.stockclem.controller.PersonController;
+import co.edu.sena.stockclem.model.Person;
 import co.edu.sena.stockclem.model.Supplier;
 import co.edu.sena.stockclem.utils.MessageUtils;
 import java.awt.Color;
@@ -10,18 +11,19 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * date: 26/04/2025
  * @author Esteban Colorado Vargas
+ * objetivo: crear la vista para la tabla person.
  */
-public class JFrameSupplier extends javax.swing.JFrame {
-    private final ISupplierController supplierController = new SupplierController();
+public class JFramePerson extends javax.swing.JFrame {
+    private final IPersonController personController = new PersonController();
     int xMouse;
     int yMouse;
 
     /**
-     * Creates new form JFrameSupplier
+     * Creates new form JFramePerson
      */
-    public JFrameSupplier() {
+    public JFramePerson() {
         initComponents();
         fillTable();
     }
@@ -37,20 +39,20 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
         jPanelBackGround = new javax.swing.JPanel();
         jLabelTitle = new javax.swing.JLabel();
+        jTextFieldDocument = new javax.swing.JTextField();
+        jButtonInsert = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePerson = new javax.swing.JTable();
+        jButtonClear = new javax.swing.JButton();
+        jLabelPhone = new javax.swing.JLabel();
+        jLabelDocument = new javax.swing.JLabel();
+        jLabelName = new javax.swing.JLabel();
+        jTextFieldName = new javax.swing.JTextField();
         jPanelCloseWindow = new javax.swing.JPanel();
         jLabelCloseWindow = new javax.swing.JLabel();
-        jLabelId = new javax.swing.JLabel();
-        jLabelNameSupplier = new javax.swing.JLabel();
-        jLabelPhoneSupplier = new javax.swing.JLabel();
-        jTextFieldIdSupplier = new javax.swing.JTextField();
-        jTextFieldNameSupplier = new javax.swing.JTextField();
+        jTextFieldPhone = new javax.swing.JTextField();
         jButtonUpdate = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jButtonClear = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextFieldPhoneSupplier = new javax.swing.JTextField();
-        jButtonInsert = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
 
@@ -58,12 +60,74 @@ public class JFrameSupplier extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
+        jPanelBackGround.setBackground(new java.awt.Color(255, 255, 255));
         jPanelBackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitle.setText("TABLA PROOVEDORES");
+        jLabelTitle.setText("TABLA DE PERSONAS");
         jPanelBackGround.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, 30));
+
+        jTextFieldDocument.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanelBackGround.add(jTextFieldDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, -1));
+
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+
+        jTablePerson.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jTablePerson.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTablePerson.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTablePerson.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePersonMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTablePerson);
+
+        jPanelBackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 740, 170));
+
+        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonClear.setText("LIMPIAR");
+        jButtonClear.setBorderPainted(false);
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+
+        jLabelPhone.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelPhone.setText("TELEFONO DEL COLABORADOR:");
+        jPanelBackGround.add(jLabelPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+
+        jLabelDocument.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelDocument.setText("DOCUMENTO:");
+        jPanelBackGround.add(jLabelDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+
+        jLabelName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabelName.setText("NOMBRE DEL COLABORADOR:");
+        jPanelBackGround.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
+
+        jTextFieldName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanelBackGround.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 220, -1));
 
         jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCloseWindow.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -96,23 +160,13 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
         jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
-        jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelId.setText("ID:");
-        jPanelBackGround.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
-
-        jLabelNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelNameSupplier.setText("NOMBRE DEL PROOVEDOR:");
-        jPanelBackGround.add(jLabelNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
-
-        jLabelPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelPhoneSupplier.setText("TELEFONO DEL PROOVEDOR:");
-        jPanelBackGround.add(jLabelPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
-
-        jTextFieldIdSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jPanelBackGround.add(jTextFieldIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, -1));
-
-        jTextFieldNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jPanelBackGround.add(jTextFieldNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 220, -1));
+        jTextFieldPhone.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jTextFieldPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPhoneActionPerformed(evt);
+            }
+        });
+        jPanelBackGround.add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 220, -1));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -137,57 +191,6 @@ public class JFrameSupplier extends javax.swing.JFrame {
             }
         });
         jPanelBackGround.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, -1));
-
-        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
-        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonClear.setText("LIMPIAR");
-        jButtonClear.setBorderPainted(false);
-        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearActionPerformed(evt);
-            }
-        });
-        jPanelBackGround.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
-
-        jTable1.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanelBackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 740, 170));
-
-        jTextFieldPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jTextFieldPhoneSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPhoneSupplierActionPerformed(evt);
-            }
-        });
-        jPanelBackGround.add(jTextFieldPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 220, -1));
-
-        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonInsert.setText("INSERTAR");
-        jButtonInsert.setBorderPainted(false);
-        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInsertActionPerformed(evt);
-            }
-        });
-        jPanelBackGround.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Fondo para menu opcion1.png"))); // NOI18N
         jPanelBackGround.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
@@ -225,18 +228,60 @@ public class JFrameSupplier extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelBackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        // BOTONN PARA INSERTAR
+        try {
+            Person person = new Person();
+            person.setDocument(Long.valueOf(jTextFieldDocument.getText()));
+            person.setName(jTextFieldName.getText());
+            person.setPhone(jTextFieldPhone.getText());
+            personController.insert(person);
+            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la persona..."
+                + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jTablePersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePersonMouseClicked
+        // EVENTO PARA EL CLICK EN LA TABLA
+        int rowSelected = jTablePerson.getSelectedRow();
+        if (rowSelected != -1) {
+            Long documentSelected = Long.valueOf(jTablePerson.getValueAt(rowSelected, 0).toString());
+            try {
+                Person person = personController.findById(documentSelected);
+                jTextFieldDocument.setText(String.valueOf(documentSelected));
+                jTextFieldName.setText(person.getName());
+                jTextFieldPhone.setText(person.getPhone());
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
+                    + e.getMessage());
+            }
+        }
+        jButtonInsert.setEnabled(false);
+        jButtonDelete.setEnabled(true);
+        jButtonUpdate.setEnabled(true);
+    }//GEN-LAST:event_jTablePersonMouseClicked
+
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        // BOTON PARA LIMPIAR
+        clear();
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
     private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
         // EVENTO PARA MOVER LA PESTAÑA
         int xPosition = evt.getXOnScreen();
         int yPosition = evt.getYOnScreen();
-        
+
         this.setLocation(xPosition - xMouse, yPosition - yMouse);
     }//GEN-LAST:event_jPanelHeaderMouseDragged
 
@@ -246,6 +291,15 @@ public class JFrameSupplier extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_jPanelHeaderMousePressed
 
+    private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
+        //BOTON PARA CERRAR
+        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+
+        if(option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabelCloseWindowMouseClicked
+
     private void jLabelCloseWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseEntered
         // BOTON EFECTO HOVER
         jPanelCloseWindow.setBackground(Color.BLUE);
@@ -253,95 +307,45 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
     private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
         // TBOTON PARA EFECTO HOVER DE SALIDA
-        jPanelCloseWindow.setBackground(Color.white);
+        jPanelCloseWindow.setBackground(Color.WHITE);
     }//GEN-LAST:event_jLabelCloseWindowMouseExited
 
-    private void jTextFieldPhoneSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneSupplierActionPerformed
+    private void jTextFieldPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPhoneSupplierActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // EVENTO PARA EL CLICK EN LA TABLA
-        int rowSelected = jTable1.getSelectedRow();
-        if (rowSelected != -1) {
-            Long documentSelected = Long.valueOf(jTable1.getValueAt(rowSelected, 0).toString());
-            try {
-                Supplier supplier = supplierController.findById(documentSelected);
-                jTextFieldIdSupplier.setText(String.valueOf(documentSelected));
-                jTextFieldNameSupplier.setText(supplier.getName());
-                jTextFieldPhoneSupplier.setText(supplier.getPhone());
-            } catch (Exception e) {
-                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
-                    + e.getMessage());
-            }
-        }
-        jButtonInsert.setEnabled(false);
-        jButtonDelete.setEnabled(true);
-        jButtonUpdate.setEnabled(true);
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        // BOTON PARA LIMPIAR
-        clear();
-    }//GEN-LAST:event_jButtonClearActionPerformed
-
-    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
-        // BOTONN PARA INSERTAR
-        try {
-            Supplier supplier = new Supplier();
-            supplier.setName(jTextFieldNameSupplier.getText());
-            supplier.setPhone(jTextFieldPhoneSupplier.getText());
-            supplierController.insert(supplier);
-            MessageUtils.showInfoMessage("El proovedor se ha añadido correctamente...");
-            fillTable();
-            clear();
-        } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar el proovedor..."
-                + e.getMessage());
-        }
-    }//GEN-LAST:event_jButtonInsertActionPerformed
-
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-        // BOTON PARA ACTUALIZAR
-        try {
-            Supplier supplier = new Supplier();
-            supplier.setIdUnit(Long.valueOf(jTextFieldIdSupplier.getText()));
-            supplier.setName(jTextFieldNameSupplier.getText());
-            supplier.setPhone(jTextFieldPhoneSupplier.getText());
-            supplierController.update(supplier);
-            MessageUtils.showInfoMessage("El proovedor se ha actualizado correctamente...");
-            fillTable();
-            clear();
-        } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar el proovedor..."
-                + e.getMessage());
-        }
-    }//GEN-LAST:event_jButtonUpdateActionPerformed
+    }//GEN-LAST:event_jTextFieldPhoneActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON PARA ELIMINAR
-         try {
+        try {
             int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?",
                 "CONFIRMAR", JOptionPane.YES_NO_OPTION);
             if(option == JOptionPane.YES_OPTION){
-                supplierController.delete(Long.valueOf(jTextFieldIdSupplier.getText()));
-                MessageUtils.showInfoMessage("Proovedor eliminado correctamente...");
+                personController.delete(Long.valueOf(jTextFieldDocument.getText()));
+                MessageUtils.showInfoMessage("Colaborador eliminad@ correctamente...");
                 fillTable();
             }
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar proovedor..." + e.getMessage());
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar Colaborador..." + e.getMessage());
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
-        //BOTON PARA CERRAR
-        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-        
-        if(option == JOptionPane.YES_OPTION) {
-            System.exit(0);
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // BOTON PARA ACTUALIZAR
+        try {
+            Person person = new Person();
+            person.setDocument(Long.valueOf(jTextFieldDocument.getText()));
+            person.setName(jTextFieldName.getText());
+            person.setPhone(jTextFieldPhone.getText());
+            personController.update(person);
+            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la persona..."
+                + e.getMessage());
         }
-    }//GEN-LAST:event_jLabelCloseWindowMouseClicked
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,20 +364,20 @@ public class JFrameSupplier extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFramePerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFramePerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFramePerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFramePerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameSupplier().setVisible(true);
+                new JFramePerson().setVisible(true);
             }
         });
     }
@@ -381,17 +385,17 @@ public class JFrameSupplier extends javax.swing.JFrame {
     public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
-            jTable1.setModel(model);
+            jTablePerson.setModel(model);
             model.addColumn("Documento");
-            model.addColumn("Nombre Proovedor");
-            model.addColumn("telefono Proovedor");
+            model.addColumn("Nombre Colaborador");
+            model.addColumn("telefono Colaborador");
 
             String[] rows = new String[3];
-            List<Supplier> suppliers = supplierController.findAll();
-            for (Supplier supplier : suppliers) {
-                rows[0] = String.valueOf(supplier.getIdUnit());
-                rows[1] = supplier.getName();
-                rows[2] = supplier.getPhone();
+            List<Person> persons = personController.findAll();
+            for (Person person : persons) {
+                rows[0] = String.valueOf(person.getDocument());
+                rows[1] = person.getName();
+                rows[2] = person.getPhone();
                 model.addRow(rows);
             }
             jButtonInsert.setEnabled(true);
@@ -404,9 +408,9 @@ public class JFrameSupplier extends javax.swing.JFrame {
     }
     
     public void clear() {
-        jTextFieldIdSupplier.setText("");
-        jTextFieldNameSupplier.setText("");
-        jTextFieldPhoneSupplier.setText("");
+        jTextFieldDocument.setText("");
+        jTextFieldName.setText("");
+        jTextFieldPhone.setText("");
         jButtonInsert.setEnabled(true);
         jButtonDelete.setEnabled(false);
         jButtonUpdate.setEnabled(false);
@@ -419,17 +423,17 @@ public class JFrameSupplier extends javax.swing.JFrame {
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelCloseWindow;
-    private javax.swing.JLabel jLabelId;
-    private javax.swing.JLabel jLabelNameSupplier;
-    private javax.swing.JLabel jLabelPhoneSupplier;
+    private javax.swing.JLabel jLabelDocument;
+    private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelPhone;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanelBackGround;
     private javax.swing.JPanel jPanelCloseWindow;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextFieldIdSupplier;
-    private javax.swing.JTextField jTextFieldNameSupplier;
-    private javax.swing.JTextField jTextFieldPhoneSupplier;
+    private javax.swing.JTable jTablePerson;
+    private javax.swing.JTextField jTextFieldDocument;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldPhone;
     // End of variables declaration//GEN-END:variables
 }
