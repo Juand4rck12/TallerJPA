@@ -63,10 +63,10 @@ public class JFrameExit extends javax.swing.JFrame {
 
         jPanelBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setText("TABLA SALIDAS");
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Roboto SemiCondensed Black", 1, 24)); // NOI18N
-        jLabel1.setText("TABLA SALIDAS");
-        jPanelBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 180, -1));
+        jPanelBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 180, -1));
 
         jTableExits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,43 +83,43 @@ public class JFrameExit extends javax.swing.JFrame {
 
         jPanelBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 700, 140));
 
+        jLabelId.setText("ID:");
         jLabelId.setBackground(new java.awt.Color(0, 0, 0));
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelId.setText("ID:");
         jPanelBackground.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
+        jLabelDate.setText("FECHA:");
         jLabelDate.setBackground(new java.awt.Color(0, 0, 0));
         jLabelDate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelDate.setText("FECHA:");
         jPanelBackground.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        jLabelQuantity.setText("CANTIDAD:");
         jLabelQuantity.setBackground(new java.awt.Color(0, 0, 0));
         jLabelQuantity.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelQuantity.setText("CANTIDAD:");
         jPanelBackground.add(jLabelQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
+        jLabelObservations.setText("OBSERVACIONES:");
         jLabelObservations.setBackground(new java.awt.Color(0, 0, 0));
         jLabelObservations.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelObservations.setText("OBSERVACIONES:");
         jPanelBackground.add(jLabelObservations, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
 
+        jLabelIdArticle.setText("ID ARTICULO:");
         jLabelIdArticle.setBackground(new java.awt.Color(0, 0, 0));
         jLabelIdArticle.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelIdArticle.setText("ID ARTICULO:");
         jPanelBackground.add(jLabelIdArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
+        jLabelDocument.setText("DOCUMENTO:");
         jLabelDocument.setBackground(new java.awt.Color(0, 0, 0));
         jLabelDocument.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelDocument.setText("DOCUMENTO:");
         jPanelBackground.add(jLabelDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
+        jLabelIdUnit.setText("ID UNIDAD:");
         jLabelIdUnit.setBackground(new java.awt.Color(0, 0, 0));
         jLabelIdUnit.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelIdUnit.setText("ID UNIDAD:");
         jPanelBackground.add(jLabelIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
-        jPanelBackground.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 180, 30));
+        jPanelBackground.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 200, 30));
         jPanelBackground.add(jTextFieldObservations, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 140, 30));
-        jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 170, 30));
+        jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 200, 30));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -149,15 +149,13 @@ public class JFrameExit extends javax.swing.JFrame {
 
         jComboBoxIdUnit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelBackground.add(jComboBoxIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 120, 30));
-        jPanelBackground.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 180, -1));
+        jPanelBackground.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 200, -1));
 
         jButtonClear.setText("LIMPIAR");
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
-        jButtonClear.setText("LIMPIAR");
-        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelBackground.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 130, 30));
 
         jPanelHome.setBackground(new java.awt.Color(255, 255, 255));

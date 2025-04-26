@@ -1,12 +1,19 @@
 package co.edu.sena.stockclem.view;
 
+import co.edu.sena.stockclem.controller.IPresentationController;
+import co.edu.sena.stockclem.controller.PresentationController;
+import co.edu.sena.stockclem.model.Presentation;
+import co.edu.sena.stockclem.utils.MessageUtils;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Juan Diego
  */
 public class JFramePresentation extends javax.swing.JFrame {
+    IPresentationController presentationController = new PresentationController();
     int xMouse;
     int yMouse;
     
@@ -15,6 +22,7 @@ public class JFramePresentation extends javax.swing.JFrame {
      */
     public JFramePresentation() {
         initComponents();
+        fillTable();
     }
 
     /**
@@ -77,6 +85,11 @@ public class JFramePresentation extends javax.swing.JFrame {
 
             }
         ));
+        jTablePresentations.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePresentationsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTablePresentations);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 680, 170));
@@ -109,6 +122,11 @@ public class JFramePresentation extends javax.swing.JFrame {
         jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 130, 30));
 
         jPanelHome.setBackground(new java.awt.Color(255, 255, 255));
@@ -204,6 +222,54 @@ public class JFramePresentation extends javax.swing.JFrame {
         jPanelHome.setBackground(Color.white);
     }//GEN-LAST:event_jLabelHomeMouseExited
 
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        clear();
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jTablePresentationsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePresentationsMouseClicked
+        int rowSelected = jTablePresentations.getSelectedRow();
+        if (rowSelected != -1) {
+            Long idSelected = Long.valueOf(
+                    jTablePresentations.getValueAt(rowSelected, 0).toString());
+            try {
+                
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage(e.getMessage());
+            }
+            
+        }
+    }//GEN-LAST:event_jTablePresentationsMouseClicked
+
+    public void clear() {
+        jTextFieldId.setText("");
+        jTextFieldDescription.setText("");
+        jButtonUpdate.setEnabled(false);
+        jButtonDelete.setEnabled(false);
+        jTextFieldId.requestFocus();
+        jTablePresentations.clearSelection();
+    }
+    
+    public void fillTable() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jTablePresentations.setModel(model);
+            model.addColumn("Id");
+            model.addColumn("Descripción");
+
+            String[] rows = new String[2];
+            List<Presentation> presentations = presentationController.findAll();
+            for (Presentation presentation : presentations) {
+                rows[0] = String.valueOf(presentation.getIdPresentation());
+                rows[1] = presentation.getDescription();
+                model.addRow(rows);
+            }
+
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al llenar la tabla..."
+                    + e.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
