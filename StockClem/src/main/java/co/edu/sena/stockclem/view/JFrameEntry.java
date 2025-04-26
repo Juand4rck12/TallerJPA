@@ -146,10 +146,11 @@ public class JFrameEntry extends javax.swing.JFrame {
         jPanelBackGround.add(jTextFieldSenaCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
 
         jPanelCloseWindow.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelCloseWindow.setPreferredSize(new java.awt.Dimension(50, 50));
 
         jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/icono de casa.png"))); // NOI18N
+        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
         jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,7 +200,7 @@ public class JFrameEntry extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+        jPanelBackGround.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 130, -1));
         jPanelBackGround.add(datePickerExpirationDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 170, 30));
 
         jLabelSenaCode.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -471,14 +472,12 @@ public class JFrameEntry extends javax.swing.JFrame {
     
     public void fillComboBox() {
         try {
-            List<Entry> entry = entryController.findAll();
+            List<Article> articles = articleController.findAll();
             DefaultComboBoxModel modelEmployee = new DefaultComboBoxModel();
             jComboBoxIdArticle.setModel(modelEmployee);
-            modelEmployee.addAll(entry);
-            
+            modelEmployee.addAll(articles);
             // Establecer selección vacía inicialmente
             jComboBoxIdArticle.setSelectedIndex(0); // Ningún elemento seleccionado
-
         } catch (Exception e) {
             MessageUtils.showErrorMessage(e.getMessage());
         }

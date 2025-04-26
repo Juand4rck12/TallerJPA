@@ -61,7 +61,6 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelBackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
-        jLabelTitle.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("TABLA PROOVEDORES");
         jPanelBackGround.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, 30));
@@ -70,7 +69,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelCloseWindow.setPreferredSize(new java.awt.Dimension(50, 50));
 
         jLabelCloseWindow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/icono de casa.png"))); // NOI18N
+        jLabelCloseWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
         jLabelCloseWindow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCloseWindow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,17 +97,14 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelId.setForeground(new java.awt.Color(0, 0, 0));
         jLabelId.setText("ID:");
         jPanelBackGround.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jLabelNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelNameSupplier.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNameSupplier.setText("NOMBRE DEL PROOVEDOR:");
         jPanelBackGround.add(jLabelNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jLabelPhoneSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelPhoneSupplier.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPhoneSupplier.setText("TELEFONO DEL PROOVEDOR:");
         jPanelBackGround.add(jLabelPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
@@ -120,7 +116,6 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 0));
         jButtonUpdate.setText("ACTUALIZAR");
         jButtonUpdate.setBorderPainted(false);
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -133,7 +128,6 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonDelete.setForeground(new java.awt.Color(0, 0, 0));
         jButtonDelete.setText("ELIMINAR");
         jButtonDelete.setBorderPainted(false);
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,7 +140,6 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
         jButtonClear.setBorderPainted(false);
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -186,7 +179,6 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonInsert.setForeground(new java.awt.Color(0, 0, 0));
         jButtonInsert.setText("INSERTAR");
         jButtonInsert.setBorderPainted(false);
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
