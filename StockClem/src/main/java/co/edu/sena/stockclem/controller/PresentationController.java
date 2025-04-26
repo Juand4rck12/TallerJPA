@@ -40,7 +40,7 @@ public class PresentationController implements IPresentationController {
         // Actualizar
         presentationExists.setDescription(presentationExists.getDescription());
         EntityManagerHelper.beginTransaction();
-        DAOFactory.getPresentationDAO().insert(presentation);
+        DAOFactory.getPresentationDAO().update(presentation);
         EntityManagerHelper.commit();
         EntityManagerHelper.closeEntityManager();
     }

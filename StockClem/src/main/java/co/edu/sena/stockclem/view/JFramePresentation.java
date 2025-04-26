@@ -6,6 +6,7 @@ import co.edu.sena.stockclem.model.Presentation;
 import co.edu.sena.stockclem.utils.MessageUtils;
 import java.awt.Color;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -99,6 +100,11 @@ public class JFramePresentation extends javax.swing.JFrame {
         jButtonInsert.setForeground(new java.awt.Color(0, 0, 0));
         jButtonInsert.setText("INSERTAR");
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 130, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
@@ -107,6 +113,11 @@ public class JFramePresentation extends javax.swing.JFrame {
         jButtonUpdate.setText("MODIFICAR");
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.setEnabled(false);
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 130, 30));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
@@ -115,6 +126,11 @@ public class JFramePresentation extends javax.swing.JFrame {
         jButtonDelete.setText("ELIMINAR");
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.setEnabled(false);
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 130, 30));
 
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
@@ -135,6 +151,9 @@ public class JFramePresentation extends javax.swing.JFrame {
         jLabelHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
         jLabelHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelHomeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelHomeMouseEntered(evt);
             }
@@ -214,7 +233,7 @@ public class JFramePresentation extends javax.swing.JFrame {
 
     private void jLabelHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseEntered
         // BOTON EFECTO HOVER
-        jPanelHome.setBackground(Color.RED);
+        jPanelHome.setBackground(Color.CYAN);
     }//GEN-LAST:event_jLabelHomeMouseEntered
 
     private void jLabelHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseExited
@@ -232,17 +251,78 @@ public class JFramePresentation extends javax.swing.JFrame {
             Long idSelected = Long.valueOf(
                     jTablePresentations.getValueAt(rowSelected, 0).toString());
             try {
-                
+                Presentation presentation = presentationController.findById(idSelected);
+                jTextFieldId.setText(String.valueOf(presentation.getIdPresentation()));
+                jTextFieldDescription.setText(presentation.getDescription());
             } catch (Exception e) {
                 MessageUtils.showErrorMessage(e.getMessage());
-            }
-            
+            }        
         }
+        jButtonInsert.setEnabled(false);
+        jButtonUpdate.setEnabled(true);
+        jButtonDelete.setEnabled(true);
     }//GEN-LAST:event_jTablePresentationsMouseClicked
+
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        try {
+            Presentation presentation = new Presentation();
+            presentation.setDescription(jTextFieldDescription.getText());
+            presentationController.insert(presentation);
+            MessageUtils.showInfoMessage("Presentación añadida exitosamente");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la presentación..." +
+                e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try {
+            Presentation presentation = new Presentation();
+            presentation.setIdPresentation(Long.valueOf(jTextFieldId.getText()));
+            presentation.setDescription(jTextFieldDescription.getText());
+            presentationController.update(presentation);
+            MessageUtils.showInfoMessage("Presentación actualizada exitosamente");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la presentación..." +
+                e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // BOTON PARA ELIMINAR
+         try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                presentationController.delete(Long.valueOf(jTextFieldId.getText()));
+                MessageUtils.showInfoMessage("Presentación eliminada correctamente...");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar proovedor..." + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
+        //BOTON PARA CERRAR
+        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
+        if(option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabelHomeMouseClicked
 
     public void clear() {
         jTextFieldId.setText("");
         jTextFieldDescription.setText("");
+        jButtonInsert.setEnabled(true);
         jButtonUpdate.setEnabled(false);
         jButtonDelete.setEnabled(false);
         jTextFieldId.requestFocus();

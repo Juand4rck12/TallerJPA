@@ -96,7 +96,7 @@ public class Unit implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.stockclem.model.Unit[ idUnit=" + idUnit + " ]";
+        return name;
     }
     
 }

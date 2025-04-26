@@ -1,12 +1,35 @@
 package co.edu.sena.stockclem.view;
 
+import co.edu.sena.stockclem.controller.ArticleController;
+import co.edu.sena.stockclem.controller.ExitController;
+import co.edu.sena.stockclem.controller.IArticleController;
+import co.edu.sena.stockclem.controller.IExitController;
+import co.edu.sena.stockclem.controller.IPersonController;
+import co.edu.sena.stockclem.controller.IUnitController;
+import co.edu.sena.stockclem.controller.PersonController;
+import co.edu.sena.stockclem.controller.UnitController;
+import co.edu.sena.stockclem.model.Article;
+import co.edu.sena.stockclem.utils.MessageUtils;
+import co.edu.sena.stockclem.model.Exit;
+import co.edu.sena.stockclem.model.Person;
+import co.edu.sena.stockclem.model.Unit;
+import co.edu.sena.stockclem.utils.ConvertUtils;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author victus
  */
 public class JFrameExit extends javax.swing.JFrame {
+    private IExitController exitController = new ExitController();
+    private IPersonController personController = new PersonController();
+    private IUnitController unitController = new UnitController();
+    private IArticleController articleController = new ArticleController();
+    
     int xMouse;
     int yMouse;
     
@@ -15,6 +38,8 @@ public class JFrameExit extends javax.swing.JFrame {
      */
     public JFrameExit() {
         initComponents();
+        fillTable();
+        fillCombos();
     }
 
     /**
@@ -38,7 +63,6 @@ public class JFrameExit extends javax.swing.JFrame {
         jLabelDocument = new javax.swing.JLabel();
         jLabelIdUnit = new javax.swing.JLabel();
         jTextFieldQuantity = new javax.swing.JTextField();
-        jTextFieldObservations = new javax.swing.JTextField();
         jTextFieldId = new javax.swing.JTextField();
         jButtonInsert = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
@@ -46,8 +70,10 @@ public class JFrameExit extends javax.swing.JFrame {
         jComboBoxIdArticle = new javax.swing.JComboBox<>();
         jComboBoxDocument = new javax.swing.JComboBox<>();
         jComboBoxIdUnit = new javax.swing.JComboBox<>();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        datePickerExit = new com.github.lgooddatepicker.components.DatePicker();
         jButtonClear = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaObservations = new javax.swing.JTextArea();
         jPanelHome = new javax.swing.JPanel();
         jLabelHome = new javax.swing.JLabel();
         jLabelBackground = new javax.swing.JLabel();
@@ -75,9 +101,14 @@ public class JFrameExit extends javax.swing.JFrame {
 
             }
         ));
+        jTableExits.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableExitsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableExits);
 
-        jPanelBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 700, 140));
+        jPanelBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 720, 140));
 
         jLabelId.setText("ID:");
         jLabelId.setBackground(new java.awt.Color(0, 0, 0));
@@ -114,13 +145,17 @@ public class JFrameExit extends javax.swing.JFrame {
         jLabelIdUnit.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jPanelBackground.add(jLabelIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
         jPanelBackground.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 200, 30));
-        jPanelBackground.add(jTextFieldObservations, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 140, 30));
         jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 200, 30));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonInsert.setText("INSERTAR");
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
         jPanelBackground.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 130, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
@@ -128,31 +163,50 @@ public class JFrameExit extends javax.swing.JFrame {
         jButtonUpdate.setText("MODIFICAR");
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.setEnabled(false);
-        jPanelBackground.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 130, 30));
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 130, 30));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonDelete.setText("ELIMINAR");
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.setEnabled(false);
-        jPanelBackground.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 130, 30));
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 130, 30));
 
-        jComboBoxIdArticle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelBackground.add(jComboBoxIdArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 120, 30));
 
-        jComboBoxDocument.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelBackground.add(jComboBoxDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 120, 30));
 
-        jComboBoxIdUnit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelBackground.add(jComboBoxIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 120, 30));
-        jPanelBackground.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 200, -1));
+        jPanelBackground.add(datePickerExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 200, -1));
 
         jButtonClear.setText("LIMPIAR");
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
-        jPanelBackground.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 130, 30));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
+        jPanelBackground.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 130, 30));
+
+        jTextAreaObservations.setColumns(20);
+        jTextAreaObservations.setLineWrap(true);
+        jTextAreaObservations.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaObservations);
+
+        jPanelBackground.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 140, 100));
 
         jPanelHome.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHome.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,6 +215,9 @@ public class JFrameExit extends javax.swing.JFrame {
         jLabelHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Icono de Home.png"))); // NOI18N
         jLabelHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelHomeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelHomeMouseEntered(evt);
             }
@@ -240,7 +297,7 @@ public class JFrameExit extends javax.swing.JFrame {
 
     private void jLabelHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseEntered
         // BOTON EFECTO HOVER
-        jPanelHome.setBackground(Color.RED);
+        jPanelHome.setBackground(Color.CYAN);
     }//GEN-LAST:event_jLabelHomeMouseEntered
 
     private void jLabelHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseExited
@@ -248,6 +305,176 @@ public class JFrameExit extends javax.swing.JFrame {
         jPanelHome.setBackground(Color.white);
     }//GEN-LAST:event_jLabelHomeMouseExited
 
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        clear();
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
+        //BOTON PARA CERRAR
+        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
+        if(option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabelHomeMouseClicked
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                exitController.delete(Long.valueOf(jTextFieldId.getText()));
+                MessageUtils.showInfoMessage("Salida eliminada correctamente...");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar salida..." + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+        try {
+            Exit exit = new Exit();
+            exit.setDate(ConvertUtils.localDateToDate(datePickerExit.getDate()));
+            exit.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
+            exit.setIdUnit((Unit) jComboBoxIdUnit.getSelectedItem());
+            exit.setDocument((Person) jComboBoxDocument.getSelectedItem());
+            exit.setIdArticle((Article) jComboBoxIdArticle.getSelectedItem());
+            exit.setObservations(jTextAreaObservations.getText());
+            exitController.insert(exit);
+            MessageUtils.showInfoMessage("Salida añadida exitosamente");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la salida..."
+                    + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        try {
+            Exit exit = new Exit();
+            exit.setIdExit(Long.valueOf(jTextFieldId.getText()));
+            exit.setDate(ConvertUtils.localDateToDate(datePickerExit.getDate()));
+            exit.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
+            exit.setIdUnit((Unit) jComboBoxIdUnit.getSelectedItem());
+            exit.setDocument((Person) jComboBoxDocument.getSelectedItem());
+            exit.setIdArticle((Article) jComboBoxIdArticle.getSelectedItem());
+            exit.setObservations(jTextAreaObservations.getText());
+            exitController.update(exit);
+            MessageUtils.showInfoMessage("Salida actualizada exitosamente");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la salida..."
+                    + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jTableExitsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableExitsMouseClicked
+        int rowSelected = jTableExits.getSelectedRow();
+        if (rowSelected != -1) {
+            Long idExit = Long.valueOf(jTableExits.getValueAt(rowSelected, 0).toString());
+            try {
+                Exit exit = exitController.findById(idExit);
+                jTextFieldId.setText(String.valueOf(exit.getIdExit()));
+                datePickerExit.setDate(ConvertUtils.dateToLocalDate(exit.getDate()));
+                jTextFieldQuantity.setText(String.valueOf(exit.getQuantity()));
+                jComboBoxIdUnit.getModel().setSelectedItem(exit.getIdUnit());
+                jComboBoxDocument.getModel().setSelectedItem(exit.getDocument());
+                jComboBoxIdArticle.getModel().setSelectedItem(exit.getIdArticle());
+                jTextAreaObservations.setText(exit.getObservations());
+                
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage("Error al usar el clic en la tabla..." 
+                        + e.getMessage());
+            }
+            jButtonInsert.setEnabled(false);
+            jButtonUpdate.setEnabled(true);
+            jButtonDelete.setEnabled(true);
+            
+        }
+        
+    }//GEN-LAST:event_jTableExitsMouseClicked
+
+    public void clear(){
+        jTextFieldId.setText("");
+        jTextFieldQuantity.setText("");
+        jTextAreaObservations.setText("");
+        jComboBoxDocument.setSelectedIndex(0);
+        jComboBoxIdArticle.setSelectedIndex(0);
+        jComboBoxIdUnit.setSelectedIndex(0);
+        datePickerExit.setDateToToday();
+        jButtonInsert.setEnabled(true);
+        jButtonUpdate.setEnabled(false);
+        jButtonDelete.setEnabled(false);
+        jTextFieldId.requestFocus();
+        jTableExits.clearSelection();
+    }
+    
+    public void fillTable() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jTableExits.setModel(model);
+            model.addColumn("Id");
+            model.addColumn("Fecha");
+            model.addColumn("Cantidad");
+            model.addColumn("Articulo");
+            model.addColumn("Empleado");
+            model.addColumn("Unidad");
+            
+            String[] rows = new String[6];
+            List<Exit> exits = exitController.findAll();
+            for (Exit exit : exits) {
+                rows[0] = String.valueOf(exit.getIdExit());
+                rows[1] = ConvertUtils.dateToString(exit.getDate());
+                rows[2] = String.valueOf(exit.getQuantity());
+                rows[3] = exit.getIdArticle().getName();
+                rows[4] = exit.getDocument().getName();
+                rows[5] = exit.getIdUnit().getName();
+                model.addRow(rows);
+            }
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al llenar la tabla..." + 
+                e.getMessage());
+        }
+    }
+    
+    public void fillCombos() {
+        try {
+            // Listar todas las categorias foraneas
+            List<Person> persons = personController.findAll();
+            List<Unit> units = unitController.findAll();
+            List<Article> articles = articleController.findAll();
+            
+            // Crear modelos
+            DefaultComboBoxModel personsModel = new DefaultComboBoxModel();
+            DefaultComboBoxModel unitsModel = new DefaultComboBoxModel();
+            DefaultComboBoxModel articlesModel = new DefaultComboBoxModel();
+            
+            // Setear modelos
+            jComboBoxIdUnit.setModel(unitsModel);
+            jComboBoxIdArticle.setModel(articlesModel);
+            jComboBoxDocument.setModel(personsModel);
+            
+            // Agregar datos y establecer primera posición por default
+            unitsModel.addAll(units);
+            personsModel.addAll(persons);
+            articlesModel.addAll(articles);
+            jComboBoxIdUnit.setSelectedIndex(0);
+            jComboBoxIdArticle.setSelectedIndex(0);
+            jComboBoxDocument.setSelectedIndex(0);
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al llenar los ComboBox..." +
+                    e.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -284,7 +511,7 @@ public class JFrameExit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private com.github.lgooddatepicker.components.DatePicker datePickerExit;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
@@ -306,9 +533,10 @@ public class JFrameExit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelHome;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableExits;
+    private javax.swing.JTextArea jTextAreaObservations;
     private javax.swing.JTextField jTextFieldId;
-    private javax.swing.JTextField jTextFieldObservations;
     private javax.swing.JTextField jTextFieldQuantity;
     // End of variables declaration//GEN-END:variables
 }

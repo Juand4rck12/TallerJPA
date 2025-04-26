@@ -271,7 +271,7 @@ public class JFramePerson extends javax.swing.JFrame {
 
     private void jLabelCloseWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseEntered
         // BOTON EFECTO HOVER
-        jPanelCloseWindow.setBackground(Color.BLUE);
+        jPanelCloseWindow.setBackground(Color.CYAN);
     }//GEN-LAST:event_jLabelCloseWindowMouseEntered
 
     private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
