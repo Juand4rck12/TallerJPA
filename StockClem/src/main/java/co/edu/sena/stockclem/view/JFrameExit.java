@@ -46,6 +46,7 @@ public class JFrameExit extends javax.swing.JFrame {
         jComboBoxIdArticle = new javax.swing.JComboBox<>();
         jComboBoxDocument = new javax.swing.JComboBox<>();
         jComboBoxIdUnit = new javax.swing.JComboBox<>();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jButtonClear = new javax.swing.JButton();
         jPanelHome = new javax.swing.JPanel();
         jLabelHome = new javax.swing.JLabel();
@@ -101,20 +102,20 @@ public class JFrameExit extends javax.swing.JFrame {
         jLabelIdArticle.setBackground(new java.awt.Color(0, 0, 0));
         jLabelIdArticle.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelIdArticle.setText("ID ARTICULO:");
-        jPanelBackground.add(jLabelIdArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        jPanelBackground.add(jLabelIdArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
         jLabelDocument.setBackground(new java.awt.Color(0, 0, 0));
         jLabelDocument.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelDocument.setText("DOCUMENTO:");
-        jPanelBackground.add(jLabelDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
+        jPanelBackground.add(jLabelDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         jLabelIdUnit.setBackground(new java.awt.Color(0, 0, 0));
         jLabelIdUnit.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelIdUnit.setText("ID UNIDAD:");
-        jPanelBackground.add(jLabelIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
-        jPanelBackground.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 120, 30));
+        jPanelBackground.add(jLabelIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
+        jPanelBackground.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 180, 30));
         jPanelBackground.add(jTextFieldObservations, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 140, 30));
-        jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 120, 30));
+        jPanelBackground.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 170, 30));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -137,16 +138,20 @@ public class JFrameExit extends javax.swing.JFrame {
         jPanelBackground.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 130, 30));
 
         jComboBoxIdArticle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelBackground.add(jComboBoxIdArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 120, 30));
+        jPanelBackground.add(jComboBoxIdArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 120, 30));
 
         jComboBoxDocument.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelBackground.add(jComboBoxDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 120, 30));
+        jPanelBackground.add(jComboBoxDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 120, 30));
 
         jComboBoxIdUnit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelBackground.add(jComboBoxIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 120, 30));
+        jPanelBackground.add(jComboBoxIdUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 120, 30));
+        jPanelBackground.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 180, -1));
 
+        jButtonClear.setText("LIMPIAR");
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelBackground.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 130, 30));
@@ -281,6 +286,7 @@ public class JFrameExit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
