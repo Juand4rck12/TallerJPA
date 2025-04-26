@@ -7,10 +7,11 @@ import java.util.List;
 
 /**
  * date: 24/04/2025
- * @author Esteban Colorado Vargas
- * objetivo: crear los controladores para Article
+ *
+ * @author Esteban Colorado Vargas objetivo: crear los controladores para
+ * Article
  */
-public class EntryController implements IEntryController{
+public class EntryController implements IEntryController {
 
     @Override
     public void insert(Entry entry) throws Exception {
@@ -29,15 +30,17 @@ public class EntryController implements IEntryController{
         if (entry.getQuantity() <= 0) {
             throw new Exception("La cantidad debe ser mayor a 0...");
         }
-        //FK
         if (entry.getIdArticle() == null) {
             throw new Exception("El id del articulo es obligatorio...");
         }
-        //
-        Entry entryExits = DAOFactory.getEntryDAO().findById(entry.getIdEntry());
-        if (entryExits != null) {
-            throw new Exception("Ya existe una entrada con ese id...");
+        // NO BUSQUES por ID al insertar, porque aún no tiene
+        if (entry.getIdEntry() != null) {
+            Entry entryExits = DAOFactory.getEntryDAO().findById(entry.getIdEntry());
+            if (entryExits != null) {
+                throw new Exception("Ya existe una entrada con ese id...");
+            }
         }
+
         //INSERTAR
         EntityManagerHelper.beginTransaction();
         DAOFactory.getEntryDAO().insert(entry);
@@ -48,7 +51,7 @@ public class EntryController implements IEntryController{
     @Override
     public void update(Entry entry) throws Exception {
         if (entry == null) {
-                throw new Exception("La entrada es obligatorio...");
+            throw new Exception("La entrada es obligatorio...");
         }
         if ("".equals(entry.getSenaCode())) {
             throw new Exception("El codigo SENA es obligatorio...");
@@ -76,8 +79,8 @@ public class EntryController implements IEntryController{
         entryExits.setDate(entry.getDate());
         entryExits.setExpirationDate(entry.getExpirationDate());
         entryExits.setQuantity(entry.getQuantity());
-        entryExits.setSenaCode(entry.getSenaCode());
         entryExits.setObservations(entry.getObservations());
+        entryExits.setIdArticle(entry.getIdArticle());
         EntityManagerHelper.beginTransaction();
         DAOFactory.getEntryDAO().update(entry);
         EntityManagerHelper.commit();
@@ -93,6 +96,12 @@ public class EntryController implements IEntryController{
         if (entryExits == null) {
             throw new Exception("No existe la entrada...");
         }
+
+        // ELIMINAR
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getEntryDAO().delete(entryExits);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
@@ -107,5 +116,5 @@ public class EntryController implements IEntryController{
     public List<Entry> findAll() throws Exception {
         return DAOFactory.getEntryDAO().findAll();
     }
-    
+
 }

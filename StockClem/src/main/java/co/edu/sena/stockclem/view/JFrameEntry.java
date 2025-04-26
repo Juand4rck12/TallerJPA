@@ -6,12 +6,10 @@ import co.edu.sena.stockclem.controller.IArticleController;
 import co.edu.sena.stockclem.controller.IEntryController;
 import co.edu.sena.stockclem.model.Article;
 import co.edu.sena.stockclem.model.Entry;
-import co.edu.sena.stockclem.model.Supplier;
 import co.edu.sena.stockclem.utils.ConvertUtils;
 import co.edu.sena.stockclem.utils.MessageUtils;
 import java.awt.Color;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -373,6 +371,7 @@ public class JFrameEntry extends javax.swing.JFrame {
         // BOTON PARA ACTUALIZAR
         try {
             Entry entry = new Entry();
+            entry.setIdEntry(Long.valueOf(jTextFieldIdEntry.getText()));
             entry.setSenaCode(jTextFieldSenaCode.getText());
             entry.setDate(ConvertUtils.localDateToDate(datePickerDateEnter.getDate()));
             entry.setExpirationDate(ConvertUtils.localDateToDate(datePickerExpirationDate.getDate()));

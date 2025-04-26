@@ -94,6 +94,12 @@ public class ArticleController implements IArticleController {
         if (articleExits == null) {
             throw new Exception("No existe el articulo...");
         }
+        
+        // ELIMINAR
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getArticleDAO().delete(articleExits);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override

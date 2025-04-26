@@ -68,6 +68,12 @@ public class PersonController implements IPersonController{
         if (personExits == null) {
             throw new Exception("No existe el articulo...");
         }
+        
+        // ELIMINAR
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getPersonDAO().delete(personExits);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
