@@ -48,7 +48,7 @@ public class EntryController implements IEntryController{
     @Override
     public void update(Entry entry) throws Exception {
         if (entry == null) {
-            throw new Exception("El articulo es obligatorio...");
+                throw new Exception("La entrada es obligatorio...");
         }
         if ("".equals(entry.getSenaCode())) {
             throw new Exception("El codigo SENA es obligatorio...");
