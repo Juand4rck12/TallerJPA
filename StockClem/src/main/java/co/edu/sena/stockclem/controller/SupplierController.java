@@ -67,6 +67,12 @@ public class SupplierController implements ISupplierController{
         if (supplierExits == null) {
             throw new Exception("No existe el proovedor...");
         }
+        
+        // ELIMINAR
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getSupplierDAO().delete(supplierExits);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
