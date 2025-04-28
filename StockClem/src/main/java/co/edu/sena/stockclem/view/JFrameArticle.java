@@ -4,17 +4,44 @@
  */
 package co.edu.sena.stockclem.view;
 
+import co.edu.sena.stockclem.controller.ArticleController;
+import co.edu.sena.stockclem.controller.CategoryController;
+import co.edu.sena.stockclem.controller.IArticleController;
+import co.edu.sena.stockclem.controller.ICategoryController;
+import co.edu.sena.stockclem.controller.IPresentationController;
+import co.edu.sena.stockclem.controller.ISupplierController;
+import co.edu.sena.stockclem.controller.PresentationController;
+import co.edu.sena.stockclem.controller.SupplierController;
+import co.edu.sena.stockclem.model.Article;
+import co.edu.sena.stockclem.model.Category;
+import co.edu.sena.stockclem.model.Presentation;
+import co.edu.sena.stockclem.model.Supplier;
+import javax.swing.JOptionPane;
+import co.edu.sena.stockclem.utils.MessageUtils;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Nicolle Melendez
  */
 public class JFrameArticle extends javax.swing.JFrame {
+    private final IPresentationController presentationController = new PresentationController();
+    private final ICategoryController categoryController = new CategoryController();
+    private final ISupplierController supplierController = new SupplierController();
+    private final IArticleController articleController = new ArticleController();
+    int xMouse;
+    int yMouse;
 
     /**
      * Creates new form JFrameArticle
      */
     public JFrameArticle() {
         initComponents();
+        fillTable();
+        fillComboBox();
     }
 
     /**
@@ -99,15 +126,15 @@ public class JFrameArticle extends javax.swing.JFrame {
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelId.setText("ID:");
-        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabelName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelName.setText("NAME:");
-        jPanel1.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        jLabelName.setText("NOMBRE:");
+        jPanel1.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabelCantidad.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelCantidad.setText("CANTIDAD:");
-        jPanel1.add(jLabelCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jPanel1.add(jLabelCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jTextFieldIName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextFieldIName.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +142,7 @@ public class JFrameArticle extends javax.swing.JFrame {
                 jTextFieldINameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldIName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 220, -1));
+        jPanel1.add(jTextFieldIName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 220, -1));
 
         jTextFieldQuantity.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextFieldQuantity.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +150,7 @@ public class JFrameArticle extends javax.swing.JFrame {
                 jTextFieldQuantityActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 220, -1));
+        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 220, -1));
 
         jTextFieldId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextFieldId.addActionListener(new java.awt.event.ActionListener() {
@@ -131,27 +158,27 @@ public class JFrameArticle extends javax.swing.JFrame {
                 jTextFieldIdActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 220, -1));
+        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 220, -1));
 
         jLabelphoto.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelphoto.setText("FOTO:");
-        jPanel1.add(jLabelphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        jPanel1.add(jLabelphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jLabelTechnicalSheet.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelTechnicalSheet.setText("FICHA:");
-        jPanel1.add(jLabelTechnicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
+        jPanel1.add(jLabelTechnicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
 
         jLabelIdPresentation.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelIdPresentation.setText("ID PRESENTACION:");
-        jPanel1.add(jLabelIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        jPanel1.add(jLabelIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
 
         jLabelIdCategory.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelIdCategory.setText("ID CATEGORIA:");
-        jPanel1.add(jLabelIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, -1));
+        jPanel1.add(jLabelIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
 
         jLabelIdSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelIdSupplier.setText("ID PROVEEDOR:");
-        jPanel1.add(jLabelIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
+        jPanel1.add(jLabelIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
 
         jTextFieldPhoto.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextFieldPhoto.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +186,7 @@ public class JFrameArticle extends javax.swing.JFrame {
                 jTextFieldPhotoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 220, -1));
+        jPanel1.add(jTextFieldPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 220, -1));
 
         jTextFielTechicalSheet.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextFielTechicalSheet.addActionListener(new java.awt.event.ActionListener() {
@@ -167,13 +194,13 @@ public class JFrameArticle extends javax.swing.JFrame {
                 jTextFielTechicalSheetActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFielTechicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 190, -1));
+        jPanel1.add(jTextFielTechicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 190, -1));
 
-        jPanel1.add(jComboBoxIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 190, -1));
+        jPanel1.add(jComboBoxIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 190, -1));
 
-        jPanel1.add(jComboBoxIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 190, -1));
+        jPanel1.add(jComboBoxIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 190, -1));
 
-        jPanel1.add(jComboBoxIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 190, -1));
+        jPanel1.add(jComboBoxIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 190, -1));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -188,6 +215,7 @@ public class JFrameArticle extends javax.swing.JFrame {
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setEnabled(false);
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -198,6 +226,7 @@ public class JFrameArticle extends javax.swing.JFrame {
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonDelete.setText("DELETE");
+        jButtonDelete.setEnabled(false);
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
@@ -223,6 +252,11 @@ public class JFrameArticle extends javax.swing.JFrame {
 
             }
         ));
+        jTableArticle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableArticleMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableArticle);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 730, 120));
@@ -325,7 +359,24 @@ public class JFrameArticle extends javax.swing.JFrame {
 
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
         // BOTONN PARA INSERTAR
-
+            try {
+            Article article = new Article();
+            article.setName(jTextFieldIName.getText());
+            article.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
+            article.setPhoto(jTextFieldPhoto.getText());
+            article.setTechnicalSheet(jTextFielTechicalSheet.getText());
+            article.setIdPresentation((Presentation) jComboBoxIdPresentation.getSelectedItem());
+            article.setIdCategory((Category) jComboBoxIdCategory.getSelectedItem());
+            article.setIdSupplier((Supplier) jComboBoxIdSupplier.getSelectedItem());
+            articleController.insert(article);
+            MessageUtils.showInfoMessage("Salida añadida exitosamente");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la salida..."
+                    + e.getMessage());
+        }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
@@ -340,6 +391,32 @@ public class JFrameArticle extends javax.swing.JFrame {
         // BOTON PARA LIMPIAR
         clear();
     }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jTableArticleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticleMouseClicked
+        // EVENTO PARA EL CLICK EN LA TABLA
+        int rowSelected = jTableArticle.getSelectedRow();
+        if (rowSelected != -1) {
+            Long idArticle = Long.valueOf(jTableArticle.getValueAt(rowSelected, 0).toString());
+            try {
+                Article ar = articleController.findById(idArticle);
+                jTextFieldId.setText(String.valueOf(ar.getIdArticle()));
+                jTextFieldIName.setText(ar.getName());
+                jTextFieldQuantity.setText(String.valueOf(ar.getQuantity()));
+                jTextFieldPhoto.setText(ar.getPhoto());
+                jTextFielTechicalSheet.setText(ar.getTechnicalSheet());
+                jComboBoxIdPresentation.getModel().setSelectedItem(ar.getIdPresentation());
+                jComboBoxIdCategory.getModel().setSelectedItem(ar.getIdCategory());
+                jComboBoxIdSupplier.getModel().setSelectedItem(ar.getIdSupplier());
+                
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
+                    + e.getMessage());
+            }
+        }
+        jButtonInsert.setEnabled(false);
+        jButtonDelete.setEnabled(true);
+        jButtonUpdate.setEnabled(true);
+    }//GEN-LAST:event_jTableArticleMouseClicked
 
     /**
      * @param args the command line arguments
@@ -374,6 +451,88 @@ public class JFrameArticle extends javax.swing.JFrame {
                 new JFrameArticle().setVisible(true);
             }
         });
+    }
+    
+    
+    public void clear(){
+        jTextFieldId.setText("");
+        jTextFieldIName.setText("");
+        jTextFieldQuantity.setText("");
+        jTextFieldPhoto.setText("");
+        jTextFielTechicalSheet.setText("");
+        jComboBoxIdCategory.setSelectedIndex(-1);
+        jComboBoxIdPresentation.setSelectedIndex(-1);
+        jComboBoxIdSupplier.setSelectedIndex(-1);
+        jButtonInsert.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jButtonUpdate.setEnabled(false);
+    }
+    
+    
+    public void fillTable() {
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            jTableArticle.setModel(model);
+            model.addColumn("Id");
+            model.addColumn("Nombre");
+            model.addColumn("Cantidad");
+            model.addColumn("Foto");
+            model.addColumn("Ficha Tecnica");
+            model.addColumn("Nueva presentación");
+            model.addColumn("Nueva categoria");
+            model.addColumn("Nuevo proveedor");
+
+            String[] rows = new String[8];
+            List<Article> article = articleController.findAll();
+            for (Article a : article) {
+                rows[0] = String.valueOf(a.getIdArticle());
+                rows[1] = a.getName();
+                rows[2] = String.valueOf(a.getQuantity());
+                rows[3] = a.getPhoto();
+                rows[4] = a.getTechnicalSheet();
+                rows[5] = String.valueOf(a.getIdPresentation().getIdPresentation());
+                rows[6] = a.getIdCategory().getName();
+                rows[7] = a.getIdSupplier().getName();
+                model.addRow(rows);
+            }
+            jButtonInsert.setEnabled(true);
+            jButtonUpdate.setEnabled(false);
+            jButtonDelete.setEnabled(false);
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al llenar la tabla..."
+                    + e.getMessage());
+        }
+    }
+    
+        public void fillComboBox() {
+        try {
+            // Listar todas las categorias foraneas
+            List<Presentation> presentations = presentationController.findAll();
+            List<Category> categorys = categoryController.findAll();
+            List<Supplier> suppliers = supplierController.findAll();
+            
+            // Crear modelos
+            DefaultComboBoxModel presentationsModel = new DefaultComboBoxModel();
+            DefaultComboBoxModel categorysModel = new DefaultComboBoxModel();
+            DefaultComboBoxModel suppliersModel = new DefaultComboBoxModel();
+            
+            // Setear modelos
+            jComboBoxIdPresentation.setModel(presentationsModel);
+            jComboBoxIdCategory.setModel(categorysModel);
+            jComboBoxIdSupplier.setModel(suppliersModel);
+            
+            // Agregar datos y establecer primera posición por default
+            presentationsModel.addAll(presentations);
+            categorysModel.addAll(categorys);
+            suppliersModel.addAll(suppliers);
+            jComboBoxIdPresentation.setSelectedIndex(0);
+            jComboBoxIdCategory.setSelectedIndex(0);
+            jComboBoxIdSupplier.setSelectedIndex(0);
+            
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage(e.getMessage());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
