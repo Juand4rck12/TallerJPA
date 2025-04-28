@@ -380,11 +380,42 @@ public class JFrameArticle extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-
+        // BOTONN PARA ACTUALIZAR
+            try {
+            Article article = new Article();
+            article.setName(jTextFieldIName.getText());
+            article.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
+            article.setPhoto(jTextFieldPhoto.getText());
+            article.setTechnicalSheet(jTextFielTechicalSheet.getText());
+            article.setIdPresentation((Presentation) jComboBoxIdPresentation.getSelectedItem());
+            article.setIdCategory((Category) jComboBoxIdCategory.getSelectedItem());
+            article.setIdSupplier((Supplier) jComboBoxIdSupplier.getSelectedItem());
+            articleController.update(article);
+            MessageUtils.showInfoMessage("Articulo añadida exitosamente");
+            clear();
+            fillTable();
+            
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar el articulo..."
+                    + e.getMessage());
+        }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-
+        
+        //BOTON PARA ELIMINAR
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                articleController.delete(Long.valueOf(jTextFieldId.getText()));
+                MessageUtils.showInfoMessage("Articulo eliminado correctamente...");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar el articulo..." + e.getMessage());
+        }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed

@@ -182,6 +182,11 @@ public class JFrameCategory extends javax.swing.JFrame {
 
             }
         ));
+        jTableCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCategoryMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableCategory);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 352, 730, 100));
@@ -263,20 +268,76 @@ public class JFrameCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelHomeMouseExited
 
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
-
+        // BOTONN PARA INSERTAR
+        try {
+            Category category = new Category();
+            category.setName(jTextFieldName.getText());
+            category.setDescription(jTextAreaDescription.getText());
+            categoryController.insert(category);
+            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la persona..."
+                + e.getMessage());
+        }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-
+        // BOTON PARA ACTUALIZAR
+        try {
+            Category category = new Category();
+            category.setName(jTextFieldName.getText());
+            category.setDescription(jTextAreaDescription.getText());
+            categoryController.update(category);
+            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            fillTable();
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la persona..."
+                + e.getMessage());
+        }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-
+        // BOTON PARA ELIMINAR
+         try {
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                categoryController.delete(Long.valueOf(jTextFieldId.getText()));
+                MessageUtils.showInfoMessage("Categoria eliminado correctamente...");
+                fillTable();
+            }
+            clear();
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar la categoria..." + e.getMessage());
+        }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-
+        clear();
     }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jTableCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCategoryMouseClicked
+        // EVENTO PARA EL CLICK EN LA TABLA
+        int rowSelected = jTableCategory.getSelectedRow();
+        if (rowSelected != -1) {
+            Long documentSelected = Long.valueOf(jTableCategory.getValueAt(rowSelected, 0).toString());
+            try {
+                Category category = categoryController.findById(documentSelected);
+                jTextFieldId.setText(String.valueOf(documentSelected));
+                jTextFieldName.setText(category.getName());
+                jTextAreaDescription.setText(category.getDescription());
+            } catch (Exception e) {
+                MessageUtils.showErrorMessage("ERROR al usar el evento de click"
+                    + e.getMessage());
+            }
+        }
+        jButtonInsert.setEnabled(false);
+        jButtonDelete.setEnabled(true);
+        jButtonUpdate.setEnabled(true);
+    }//GEN-LAST:event_jTableCategoryMouseClicked
 
     /**
      * @param args the command line arguments
@@ -337,6 +398,12 @@ public class JFrameCategory extends javax.swing.JFrame {
             MessageUtils.showErrorMessage("Ha ocurrido un error al llenar la tabla..."
                     + e.getMessage());
         }
+    }
+        
+    public void clear(){
+        jTextFieldId.setText("");
+        jTextFieldName.setText("");
+        jTextAreaDescription.setText("");
     }
     
 
