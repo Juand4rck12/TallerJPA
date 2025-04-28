@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package co.edu.sena.stockclem.view;
 
 import co.edu.sena.stockclem.controller.ArticleController;
@@ -84,6 +80,8 @@ public class JFrameArticle extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Article");
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(780, 470));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,10 +112,10 @@ public class JFrameArticle extends javax.swing.JFrame {
         );
         jPanelCloseWindowLayout.setVerticalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+        jPanel1.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,124 +124,111 @@ public class JFrameArticle extends javax.swing.JFrame {
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelId.setText("ID:");
-        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jLabelName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelName.setText("NOMBRE:");
-        jPanel1.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jPanel1.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabelCantidad.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelCantidad.setText("CANTIDAD:");
-        jPanel1.add(jLabelCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel1.add(jLabelCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jTextFieldIName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jTextFieldIName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldINameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextFieldIName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 220, -1));
+        jPanel1.add(jTextFieldIName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, 30));
 
         jTextFieldQuantity.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jTextFieldQuantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldQuantityActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 220, -1));
+        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 190, 30));
 
         jTextFieldId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jTextFieldId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIdActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 220, -1));
+        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 190, 30));
 
         jLabelphoto.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelphoto.setText("FOTO:");
-        jPanel1.add(jLabelphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jPanel1.add(jLabelphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jLabelTechnicalSheet.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelTechnicalSheet.setText("FICHA:");
-        jPanel1.add(jLabelTechnicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+        jLabelTechnicalSheet.setText("FICHA TECNICA:");
+        jPanel1.add(jLabelTechnicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
         jLabelIdPresentation.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelIdPresentation.setText("ID PRESENTACION:");
-        jPanel1.add(jLabelIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        jLabelIdPresentation.setText("PRESENTACION:");
+        jPanel1.add(jLabelIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
 
         jLabelIdCategory.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelIdCategory.setText("ID CATEGORIA:");
-        jPanel1.add(jLabelIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
+        jLabelIdCategory.setText("CATEGORIA:");
+        jPanel1.add(jLabelIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
 
         jLabelIdSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelIdSupplier.setText("ID PROVEEDOR:");
-        jPanel1.add(jLabelIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
+        jLabelIdSupplier.setText("PROVEEDOR:");
+        jPanel1.add(jLabelIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
 
         jTextFieldPhoto.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jTextFieldPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPhotoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextFieldPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 220, -1));
+        jPanel1.add(jTextFieldPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 190, 30));
 
         jTextFielTechicalSheet.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jTextFielTechicalSheet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFielTechicalSheetActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextFielTechicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 190, -1));
+        jPanel1.add(jTextFielTechicalSheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 190, 30));
 
-        jPanel1.add(jComboBoxIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 190, -1));
+        jComboBoxIdSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanel1.add(jComboBoxIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 190, 30));
 
-        jPanel1.add(jComboBoxIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 190, -1));
+        jComboBoxIdPresentation.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanel1.add(jComboBoxIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 190, 30));
 
-        jPanel1.add(jComboBoxIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 190, -1));
+        jComboBoxIdCategory.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanel1.add(jComboBoxIdCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 190, 30));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
+        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 130, -1));
+        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setBorderPainted(false);
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.setEnabled(false);
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 150, -1));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 130, 30));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonDelete.setText("DELETE");
+        jButtonDelete.setBorderPainted(false);
+        jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.setEnabled(false);
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 110, -1));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 130, 30));
 
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonClear.setText("LIMPIAR");
+        jButtonClear.setBorderPainted(false);
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 110, -1));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 130, 30));
 
+        jTableArticle.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jTableArticle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -252,6 +237,7 @@ public class JFrameArticle extends javax.swing.JFrame {
 
             }
         ));
+        jTableArticle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTableArticle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableArticleMouseClicked(evt);
@@ -319,11 +305,13 @@ public class JFrameArticle extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelHeaderMousePressed
 
     private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
-        //BOTON PARA CERRAR
-        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
         if(option == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            new JFrameMenu().setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_jLabelCloseWindowMouseClicked
 
@@ -333,29 +321,9 @@ public class JFrameArticle extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelCloseWindowMouseEntered
 
     private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
-        // TBOTON PARA EFECTO HOVER DE SALIDA
+        // BOTON PARA EFECTO HOVER DE SALIDA
         jPanelCloseWindow.setBackground(Color.WHITE);
     }//GEN-LAST:event_jLabelCloseWindowMouseExited
-
-    private void jTextFieldINameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldINameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldINameActionPerformed
-
-    private void jTextFieldQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldQuantityActionPerformed
-
-    private void jTextFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdActionPerformed
-
-    private void jTextFieldPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPhotoActionPerformed
-
-    private void jTextFielTechicalSheetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielTechicalSheetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFielTechicalSheetActionPerformed
 
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
         // BOTONN PARA INSERTAR
@@ -369,12 +337,11 @@ public class JFrameArticle extends javax.swing.JFrame {
             article.setIdCategory((Category) jComboBoxIdCategory.getSelectedItem());
             article.setIdSupplier((Supplier) jComboBoxIdSupplier.getSelectedItem());
             articleController.insert(article);
-            MessageUtils.showInfoMessage("Salida añadida exitosamente");
+            MessageUtils.showInfoMessage("Articulo añadido exitosamente");
             clear();
             fillTable();
-            
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la salida..."
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar el articulo..."
                     + e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
@@ -383,6 +350,7 @@ public class JFrameArticle extends javax.swing.JFrame {
         // BOTONN PARA ACTUALIZAR
             try {
             Article article = new Article();
+            article.setIdArticle(Long.valueOf(jTextFieldId.getText()));
             article.setName(jTextFieldIName.getText());
             article.setQuantity(Integer.parseInt(jTextFieldQuantity.getText()));
             article.setPhoto(jTextFieldPhoto.getText());
@@ -394,7 +362,6 @@ public class JFrameArticle extends javax.swing.JFrame {
             MessageUtils.showInfoMessage("Articulo añadida exitosamente");
             clear();
             fillTable();
-            
         } catch (Exception e) {
             MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar el articulo..."
                     + e.getMessage());
@@ -504,26 +471,22 @@ public class JFrameArticle extends javax.swing.JFrame {
         try {
             DefaultTableModel model = new DefaultTableModel();
             jTableArticle.setModel(model);
-            model.addColumn("Id");
+            model.addColumn("ID");
             model.addColumn("Nombre");
             model.addColumn("Cantidad");
-            model.addColumn("Foto");
-            model.addColumn("Ficha Tecnica");
-            model.addColumn("Nueva presentación");
-            model.addColumn("Nueva categoria");
-            model.addColumn("Nuevo proveedor");
+            model.addColumn("Presentación");
+            model.addColumn("Categoria");
+            model.addColumn("Proveedor");
 
-            String[] rows = new String[8];
+            String[] rows = new String[6];
             List<Article> article = articleController.findAll();
             for (Article a : article) {
                 rows[0] = String.valueOf(a.getIdArticle());
                 rows[1] = a.getName();
                 rows[2] = String.valueOf(a.getQuantity());
-                rows[3] = a.getPhoto();
-                rows[4] = a.getTechnicalSheet();
-                rows[5] = String.valueOf(a.getIdPresentation().getIdPresentation());
-                rows[6] = a.getIdCategory().getName();
-                rows[7] = a.getIdSupplier().getName();
+                rows[3] = String.valueOf(a.getIdPresentation().getIdPresentation());
+                rows[4] = a.getIdCategory().getName();
+                rows[5] = a.getIdSupplier().getName();
                 model.addRow(rows);
             }
             jButtonInsert.setEnabled(true);

@@ -107,7 +107,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.stockclem.model.Category[ idCategory=" + idCategory + " ]";
+        return name;
     }
     
 }

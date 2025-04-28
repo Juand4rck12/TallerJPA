@@ -59,22 +59,25 @@ public class JFramePresentation extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitle.setFont(new java.awt.Font("Roboto Condensed Black", 1, 24)); // NOI18N
-        jLabelTitle.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("TABLA PRESENTACIONES");
-        jPanel1.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
+        jPanel1.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 50, 780, -1));
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelId.setForeground(new java.awt.Color(0, 0, 0));
         jLabelId.setText("ID:");
         jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
         jLabelDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jLabelDescription.setForeground(new java.awt.Color(0, 0, 0));
         jLabelDescription.setText("DESCRIPCIÓN:");
         jPanel1.add(jLabelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jTextFieldId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 500, 30));
+
+        jTextFieldDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jPanel1.add(jTextFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 500, 30));
 
+        jTablePresentations.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTablePresentations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -93,24 +96,24 @@ public class JFramePresentation extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablePresentations);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 680, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 720, 170));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonInsert.setForeground(new java.awt.Color(0, 0, 0));
         jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 130, 30));
+        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 130, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 0));
         jButtonUpdate.setText("MODIFICAR");
+        jButtonUpdate.setBorderPainted(false);
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.setEnabled(false);
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -118,12 +121,12 @@ public class JFramePresentation extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 130, 30));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 130, 30));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonDelete.setForeground(new java.awt.Color(0, 0, 0));
         jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBorderPainted(false);
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.setEnabled(false);
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -131,19 +134,19 @@ public class JFramePresentation extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 130, 30));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 130, 30));
 
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
+        jButtonClear.setBorderPainted(false);
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 130, 30));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 130, 30));
 
         jPanelHome.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -311,11 +314,13 @@ public class JFramePresentation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
-        //BOTON PARA CERRAR
-        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
         
         if(option == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            new JFrameMenu().setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_jLabelHomeMouseClicked
 

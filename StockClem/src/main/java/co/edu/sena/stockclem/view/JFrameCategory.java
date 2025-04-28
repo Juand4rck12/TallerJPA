@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package co.edu.sena.stockclem.view;
 
 import co.edu.sena.stockclem.controller.CategoryController;
@@ -62,6 +58,8 @@ public class JFrameCategory extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Category");
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(780, 470));
         jPanel1.setPreferredSize(new java.awt.Dimension(780, 470));
@@ -89,24 +87,25 @@ public class JFrameCategory extends javax.swing.JFrame {
         jPanelHome.setLayout(jPanelHomeLayout);
         jPanelHomeLayout.setHorizontalGroup(
             jPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
         jPanelHomeLayout.setVerticalGroup(
             jPanelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         jLabelTittle.setBackground(new java.awt.Color(0, 0, 0));
         jLabelTittle.setFont(new java.awt.Font("Roboto SemiCondensed Black", 1, 24)); // NOI18N
+        jLabelTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTittle.setText("TABLA CATEGORIAS");
-        jPanel1.add(jLabelTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 250, -1));
+        jPanel1.add(jLabelTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, -1));
 
         jLabelId.setBackground(new java.awt.Color(0, 0, 0));
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelId.setText("ID:");
-        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+        jPanel1.add(jLabelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
         jLabelIdName.setBackground(new java.awt.Color(0, 0, 0));
         jLabelIdName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -116,61 +115,70 @@ public class JFrameCategory extends javax.swing.JFrame {
         jLabelIdDescription.setBackground(new java.awt.Color(0, 0, 0));
         jLabelIdDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelIdDescription.setText("DESCRIPCION:");
-        jPanel1.add(jLabelIdDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
-        jPanel1.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 200, 30));
-        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 200, 30));
+        jPanel1.add(jLabelIdDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+
+        jTextFieldName.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanel1.add(jTextFieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 190, 30));
+
+        jTextFieldId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jPanel1.add(jTextFieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 190, 30));
 
         jTextAreaDescription.setColumns(20);
+        jTextAreaDescription.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jTextAreaDescription.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescription);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 610, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 610, 90));
 
         jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBorderPainted(false);
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 130, 30));
+        jPanel1.add(jButtonInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 130, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonUpdate.setText("MODIFICAR");
+        jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setBorderPainted(false);
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 130, 30));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 130, 30));
 
         jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBorderPainted(false);
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 130, 30));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 130, 30));
 
         jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        jButtonClear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonClear.setText("LIMPIAR");
+        jButtonClear.setBorderPainted(false);
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 130, 30));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 130, 30));
 
+        jTableCategory.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jTableCategory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -182,6 +190,7 @@ public class JFrameCategory extends javax.swing.JFrame {
 
             }
         ));
+        jTableCategory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTableCategory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCategoryMouseClicked(evt);
@@ -189,7 +198,7 @@ public class JFrameCategory extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableCategory);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 352, 730, 100));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 730, 100));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/Fondo para menu opcion1.png"))); // NOI18N
         jPanel1.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
@@ -243,17 +252,19 @@ public class JFrameCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelHeaderMouseDragged
 
     private void jPanelHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMousePressed
-        // EVENTO COMPLEMETNARIO PARA MOVER LA PESTAÑA
+        // EVENTO COMPLEMENTARIO PARA MOVER LA PESTAÑA
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_jPanelHeaderMousePressed
 
     private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
-        //BOTON PARA CERRAR
-        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        
         if(option == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            new JFrameMenu().setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_jLabelHomeMouseClicked
 
@@ -274,11 +285,11 @@ public class JFrameCategory extends javax.swing.JFrame {
             category.setName(jTextFieldName.getText());
             category.setDescription(jTextAreaDescription.getText());
             categoryController.insert(category);
-            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            MessageUtils.showInfoMessage("La categoria se ha añadido correctamente...");
             fillTable();
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la persona..."
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la categoria..."
                 + e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
@@ -287,14 +298,15 @@ public class JFrameCategory extends javax.swing.JFrame {
         // BOTON PARA ACTUALIZAR
         try {
             Category category = new Category();
+            category.setIdCategory(Long.valueOf(jTextFieldId.getText()));
             category.setName(jTextFieldName.getText());
             category.setDescription(jTextAreaDescription.getText());
             categoryController.update(category);
-            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            MessageUtils.showInfoMessage("La categoria se ha actualizado correctamente...");
             fillTable();
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la persona..."
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la categoria..."
                 + e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
@@ -302,11 +314,11 @@ public class JFrameCategory extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON PARA ELIMINAR
          try {
-            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?",
+            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar la categoria?",
                 "CONFIRMAR", JOptionPane.YES_NO_OPTION);
             if(option == JOptionPane.YES_OPTION){
                 categoryController.delete(Long.valueOf(jTextFieldId.getText()));
-                MessageUtils.showInfoMessage("Categoria eliminado correctamente...");
+                MessageUtils.showInfoMessage("Categoria eliminada correctamente...");
                 fillTable();
             }
             clear();
@@ -379,7 +391,7 @@ public class JFrameCategory extends javax.swing.JFrame {
         try {
             DefaultTableModel model = new DefaultTableModel();
             jTableCategory.setModel(model);
-            model.addColumn("Id");
+            model.addColumn("ID");
             model.addColumn("Nombre");
             model.addColumn("Descripcion");
 
@@ -404,6 +416,9 @@ public class JFrameCategory extends javax.swing.JFrame {
         jTextFieldId.setText("");
         jTextFieldName.setText("");
         jTextAreaDescription.setText("");
+        jButtonInsert.setEnabled(true);
+        jButtonUpdate.setEnabled(false);
+        jButtonDelete.setEnabled(false);
     }
     
 

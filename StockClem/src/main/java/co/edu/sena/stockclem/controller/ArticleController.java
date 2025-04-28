@@ -21,7 +21,7 @@ public class ArticleController implements IArticleController {
             throw new Exception("El nombre del articulo es obligatorio...");
         }
         if (article.getQuantity() <= 0) {
-            throw new Exception("La cantidad no puede ser 0...");
+            throw new Exception("La cantidad debe ser mayor a 0...");
         }
         //FKS
         if (article.getIdPresentation() == null) {
@@ -34,9 +34,11 @@ public class ArticleController implements IArticleController {
             throw new Exception("El id del proovedor es obligatorio...");
         }
         //
-        Article articleExits = DAOFactory.getArticleDAO().findById(article.getIdArticle());
-        if (articleExits != null) {
-            throw new Exception("Ya existe un articulo con ese id...");
+        if (article.getIdArticle() != null) {
+            Article articleExits = DAOFactory.getArticleDAO().findById(article.getIdArticle());
+            if (articleExits != null) {
+                throw new Exception("Ya existe un articulo con ese id...");
+            }
         }
         //INSERTAR
         EntityManagerHelper.beginTransaction();

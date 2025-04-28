@@ -95,7 +95,7 @@ public class Presentation implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.stockclem.model.Presentation[ idPresentation=" + idPresentation + " ]";
+        return description;
     }
     
 }

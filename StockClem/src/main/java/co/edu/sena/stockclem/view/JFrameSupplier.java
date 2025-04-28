@@ -87,14 +87,14 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jPanelCloseWindow.setLayout(jPanelCloseWindowLayout);
         jPanelCloseWindowLayout.setHorizontalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
         jPanelCloseWindowLayout.setVerticalGroup(
             jPanelCloseWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabelCloseWindow, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+        jPanelBackGround.add(jPanelCloseWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         jLabelId.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabelId.setText("ID:");
@@ -248,7 +248,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
     private void jLabelCloseWindowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseEntered
         // BOTON EFECTO HOVER
-        jPanelCloseWindow.setBackground(Color.BLUE);
+        jPanelCloseWindow.setBackground(Color.CYAN);
     }//GEN-LAST:event_jLabelCloseWindowMouseEntered
 
     private void jLabelCloseWindowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseExited
@@ -335,11 +335,13 @@ public class JFrameSupplier extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jLabelCloseWindowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseWindowMouseClicked
-        //BOTON PARA CERRAR
-        int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de salir", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        // EVENTO PARA CERRAR EL PROGRAMA
+        int option = JOptionPane.showConfirmDialog(rootPane, 
+                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
         
         if(option == JOptionPane.YES_OPTION) {
-            System.exit(0);
+            new JFrameMenu().setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_jLabelCloseWindowMouseClicked
 
