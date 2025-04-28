@@ -88,7 +88,7 @@ public class JFrameExit extends javax.swing.JFrame {
         jLabel1.setText("TABLA SALIDAS");
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Roboto SemiCondensed Black", 1, 24)); // NOI18N
-        jPanelBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 180, -1));
+        jPanelBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 200, -1));
 
         jTableExits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
