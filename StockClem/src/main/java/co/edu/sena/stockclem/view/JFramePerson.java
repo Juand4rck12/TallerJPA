@@ -68,6 +68,11 @@ public class JFramePerson extends javax.swing.JFrame {
         jPanelBackGround.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 780, 30));
 
         jTextFieldDocument.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jTextFieldDocument.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDocumentActionPerformed(evt);
+            }
+        });
         jPanelBackGround.add(jTextFieldDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, -1));
 
         jTablePerson.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
@@ -337,6 +342,10 @@ public class JFramePerson extends javax.swing.JFrame {
         // BOTON PARA LIMPIAR
         clear();
     }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jTextFieldDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDocumentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDocumentActionPerformed
 
     /**
      * @param args the command line arguments
