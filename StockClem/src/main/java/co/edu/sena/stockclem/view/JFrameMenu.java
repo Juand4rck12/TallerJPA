@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Juan Alejandro
+ * @author Esteban Colorado Vargas
  */
 public class JFrameMenu extends javax.swing.JFrame {
     int xMouse;
@@ -37,7 +37,7 @@ public class JFrameMenu extends javax.swing.JFrame {
         jButtonsSupplier = new javax.swing.JButton();
         jButtonUnit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButtonUnit1 = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
         jLabelBackGround = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
 
@@ -146,18 +146,18 @@ public class JFrameMenu extends javax.swing.JFrame {
         jLabel1.setText("¡Bienvenid@ a STOCK-CLEM!");
         jPanelBackGround.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 510, -1));
 
-        jButtonUnit1.setBackground(new java.awt.Color(255, 0, 51));
-        jButtonUnit1.setFont(new java.awt.Font("Roboto Condensed", 1, 20)); // NOI18N
-        jButtonUnit1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonUnit1.setText("CERRAR PROGRAMA");
-        jButtonUnit1.setBorderPainted(false);
-        jButtonUnit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonUnit1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClose.setBackground(new java.awt.Color(255, 0, 51));
+        jButtonClose.setFont(new java.awt.Font("Roboto Condensed", 1, 20)); // NOI18N
+        jButtonClose.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonClose.setText("CERRAR PROGRAMA");
+        jButtonClose.setBorderPainted(false);
+        jButtonClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUnit1ActionPerformed(evt);
+                jButtonCloseActionPerformed(evt);
             }
         });
-        jPanelBackGround.add(jButtonUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 450, -1));
+        jPanelBackGround.add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 450, -1));
 
         jLabelBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/stockclem/view/BackGround para Menu.png"))); // NOI18N
         jPanelBackGround.add(jLabelBackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
@@ -215,10 +215,10 @@ public class JFrameMenu extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_jPanelHeaderMousePressed
 
-    private void jButtonUnit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUnit1ActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // BOTON PARA CERRAR PROGRAMA
         System.exit(0);
-    }//GEN-LAST:event_jButtonUnit1ActionPerformed
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArticleActionPerformed
         // BOTON PARA MOSTRAR FRAME ARTICLE
@@ -303,12 +303,12 @@ public class JFrameMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonArticle;
     private javax.swing.JButton jButtonCategory;
+    private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonEntry;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonPerson;
     private javax.swing.JButton jButtonPresentation;
     private javax.swing.JButton jButtonUnit;
-    private javax.swing.JButton jButtonUnit1;
     private javax.swing.JButton jButtonsSupplier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBackGround;

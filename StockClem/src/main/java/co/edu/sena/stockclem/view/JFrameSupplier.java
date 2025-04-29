@@ -48,7 +48,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jButtonDelete = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSuppliers = new javax.swing.JTable();
         jTextFieldPhoneSupplier = new javax.swing.JTextField();
         jButtonInsert = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
@@ -114,11 +114,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jTextFieldNameSupplier.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jPanelBackGround.add(jTextFieldNameSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 410, 30));
 
-        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonUpdate.setText("ACTUALIZAR");
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setBorderPainted(false);
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
@@ -126,11 +126,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
         });
         jPanelBackGround.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, 30));
 
-        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonDelete.setText("ELIMINAR");
+        jButtonDelete.setBackground(new java.awt.Color(255, 51, 51));
         jButtonDelete.setBorderPainted(false);
         jButtonDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDelete.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteActionPerformed(evt);
@@ -138,11 +138,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
         });
         jPanelBackGround.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 30));
 
-        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
-        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonClear.setText("LIMPIAR");
+        jButtonClear.setBackground(new java.awt.Color(0, 204, 204));
         jButtonClear.setBorderPainted(false);
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
@@ -150,8 +150,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         });
         jPanelBackGround.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 130, 30));
 
-        jTable1.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSuppliers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -159,13 +158,14 @@ public class JFrameSupplier extends javax.swing.JFrame {
 
             }
         ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTableSuppliers.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jTableSuppliers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableSuppliersMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableSuppliers);
 
         jPanelBackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 680, 160));
 
@@ -177,11 +177,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
         });
         jPanelBackGround.add(jTextFieldPhoneSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 410, 30));
 
-        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
-        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonInsert.setText("INSERTAR");
+        jButtonInsert.setBackground(new java.awt.Color(0, 255, 0));
         jButtonInsert.setBorderPainted(false);
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertActionPerformed(evt);
@@ -260,11 +260,11 @@ public class JFrameSupplier extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPhoneSupplierActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTableSuppliersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSuppliersMouseClicked
         // EVENTO PARA EL CLICK EN LA TABLA
-        int rowSelected = jTable1.getSelectedRow();
+        int rowSelected = jTableSuppliers.getSelectedRow();
         if (rowSelected != -1) {
-            Long documentSelected = Long.valueOf(jTable1.getValueAt(rowSelected, 0).toString());
+            Long documentSelected = Long.valueOf(jTableSuppliers.getValueAt(rowSelected, 0).toString());
             try {
                 Supplier supplier = supplierController.findById(documentSelected);
                 jTextFieldIdSupplier.setText(String.valueOf(documentSelected));
@@ -278,7 +278,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jButtonInsert.setEnabled(false);
         jButtonDelete.setEnabled(true);
         jButtonUpdate.setEnabled(true);
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_jTableSuppliersMouseClicked
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
         // BOTON PARA LIMPIAR
@@ -383,7 +383,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
     public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
-            jTable1.setModel(model);
+            jTableSuppliers.setModel(model);
             model.addColumn("Documento");
             model.addColumn("Nombre Proovedor");
             model.addColumn("telefono Proovedor");
@@ -409,6 +409,8 @@ public class JFrameSupplier extends javax.swing.JFrame {
         jTextFieldIdSupplier.setText("");
         jTextFieldNameSupplier.setText("");
         jTextFieldPhoneSupplier.setText("");
+        jTextFieldNameSupplier.requestFocus();
+        jTableSuppliers.clearSelection();
         jButtonInsert.setEnabled(true);
         jButtonDelete.setEnabled(false);
         jButtonUpdate.setEnabled(false);
@@ -429,7 +431,7 @@ public class JFrameSupplier extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelCloseWindow;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSuppliers;
     private javax.swing.JTextField jTextFieldIdSupplier;
     private javax.swing.JTextField jTextFieldNameSupplier;
     private javax.swing.JTextField jTextFieldPhoneSupplier;

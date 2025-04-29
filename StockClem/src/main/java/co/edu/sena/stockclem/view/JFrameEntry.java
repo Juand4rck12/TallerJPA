@@ -437,12 +437,13 @@ public class JFrameEntry extends javax.swing.JFrame {
         jTextFieldSenaCode.setText("");
         jTextFieldQuantity.setText("");
         datePickerDateEnter.setText("");
+        jComboBoxIdArticle.setSelectedIndex(0);
         datePickerExpirationDate.setText("");
         jTextFieldObservations.setText("");
-        jComboBoxIdArticle.setSelectedIndex(-1);
         jButtonInsert.setEnabled(true);
         jButtonDelete.setEnabled(false);
         jButtonUpdate.setEnabled(false);
+        jTableEntry.clearSelection();
     }
     
     public void fillTable() {

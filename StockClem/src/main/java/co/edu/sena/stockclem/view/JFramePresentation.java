@@ -309,7 +309,7 @@ public class JFramePresentation extends javax.swing.JFrame {
             }
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar proovedor..." + e.getMessage());
+            MessageUtils.showErrorMessage("HUBO UN ERROR al eliminar la presentación..." + e.getMessage());
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 

@@ -1,6 +1,5 @@
 package co.edu.sena.stockclem.view;
 
-
 import co.edu.sena.stockclem.controller.IUnitController;
 import co.edu.sena.stockclem.controller.UnitController;
 import co.edu.sena.stockclem.model.Unit;
@@ -10,17 +9,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Nicolle Melendez
  */
 public class JFrameUnit extends javax.swing.JFrame {
+
     private final IUnitController unitController = new UnitController();
     int xMouse;
     int yMouse;
-    
-    
+
     /**
      * Creates new form JFrameUnit
      */
@@ -242,10 +240,11 @@ public class JFrameUnit extends javax.swing.JFrame {
 
     private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
         // EVENTO PARA CERRAR EL PROGRAMA
-        int option = JOptionPane.showConfirmDialog(rootPane, 
-                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-        
-        if(option == JOptionPane.YES_OPTION) {
+        int option = JOptionPane.showConfirmDialog(rootPane,
+                "Quieres volver a el menu principal?", "CONFIRMAR",
+                JOptionPane.YES_NO_OPTION);
+
+        if (option == JOptionPane.YES_OPTION) {
             new JFrameMenu().setVisible(true);
             dispose();
         }
@@ -267,12 +266,12 @@ public class JFrameUnit extends javax.swing.JFrame {
             Unit unit = new Unit();
             unit.setName(jTextFieldName.getText());
             unitController.insert(unit);
-            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            MessageUtils.showInfoMessage("La unidad se ha añadido correctamente...");
             fillTable();
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la persona..."
-                + e.getMessage());
+            MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la unidad..."
+                    + e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
@@ -280,23 +279,24 @@ public class JFrameUnit extends javax.swing.JFrame {
         // BOTONN PARA ACTUALIZAR
         try {
             Unit unit = new Unit();
+            unit.setIdUnit(Long.valueOf(jTextFieldId.getText()));
             unit.setName(jTextFieldName.getText());
             unitController.update(unit);
-            MessageUtils.showInfoMessage("La persona se ha añadido correctamente...");
+            MessageUtils.showInfoMessage("Unidad modificada exitosamente...");
             fillTable();
             clear();
         } catch (Exception e) {
-            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la persona..."
-                + e.getMessage());
+            MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la unidad..."
+                    + e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON PARA ELIMINAR
-         try {
-            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar el empleado?",
-                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-            if(option == JOptionPane.YES_OPTION){
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de eliminar?",
+                    "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
                 unitController.delete(Long.valueOf(jTextFieldId.getText()));
                 MessageUtils.showInfoMessage("Unidad eliminada correctamente...");
                 fillTable();
@@ -308,7 +308,7 @@ public class JFrameUnit extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-     clear();
+        clear();
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jTableUnitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUnitMouseClicked
@@ -323,7 +323,7 @@ public class JFrameUnit extends javax.swing.JFrame {
 
             } catch (Exception e) {
                 MessageUtils.showErrorMessage("ERROR al usar el evento de click"
-                    + e.getMessage());
+                        + e.getMessage());
             }
         }
         jButtonInsert.setEnabled(false);
@@ -365,15 +365,13 @@ public class JFrameUnit extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-        public void fillTable() {
+
+    public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
             jTableUnit.setModel(model);
             model.addColumn("Id");
             model.addColumn("Nombre");
-
 
             String[] rows = new String[2];
             List<Unit> units = unitController.findAll();
@@ -390,10 +388,15 @@ public class JFrameUnit extends javax.swing.JFrame {
                     + e.getMessage());
         }
     }
-        
-        public void clear(){
+
+    public void clear() {
         jTextFieldId.setText("");
         jTextFieldName.setText("");
+        jTableUnit.clearSelection();
+        jTextFieldName.requestFocus();
+        jButtonInsert.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jButtonUpdate.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

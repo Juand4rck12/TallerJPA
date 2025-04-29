@@ -173,6 +173,7 @@ public class JFrameArticle extends javax.swing.JFrame {
         jPanel1.add(jComboBoxIdSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 190, 30));
 
         jComboBoxIdPresentation.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jComboBoxIdPresentation.setToolTipText("");
         jPanel1.add(jComboBoxIdPresentation, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 190, 30));
 
         jComboBoxIdCategory.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
@@ -359,7 +360,7 @@ public class JFrameArticle extends javax.swing.JFrame {
             article.setIdCategory((Category) jComboBoxIdCategory.getSelectedItem());
             article.setIdSupplier((Supplier) jComboBoxIdSupplier.getSelectedItem());
             articleController.update(article);
-            MessageUtils.showInfoMessage("Articulo añadida exitosamente");
+            MessageUtils.showInfoMessage("Articulo actualizado exitosamente");
             clear();
             fillTable();
         } catch (Exception e) {

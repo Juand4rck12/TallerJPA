@@ -9,16 +9,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Nicolle Melendez
  */
 public class JFrameCategory extends javax.swing.JFrame {
+
     private final ICategoryController categoryController = new CategoryController();
     int xMouse;
     int yMouse;
-    
+
     /**
      * Creates new form JFrameCategory
      */
@@ -259,10 +259,11 @@ public class JFrameCategory extends javax.swing.JFrame {
 
     private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
         // EVENTO PARA CERRAR EL PROGRAMA
-        int option = JOptionPane.showConfirmDialog(rootPane, 
-                "Quieres volver a el menu principal?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-        
-        if(option == JOptionPane.YES_OPTION) {
+        int option = JOptionPane.showConfirmDialog(rootPane,
+                "Quieres volver a el menu principal?",
+                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+
+        if (option == JOptionPane.YES_OPTION) {
             new JFrameMenu().setVisible(true);
             dispose();
         }
@@ -290,7 +291,7 @@ public class JFrameCategory extends javax.swing.JFrame {
             clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage("Ha ocurrido un error al insertar la categoria..."
-                + e.getMessage());
+                    + e.getMessage());
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
@@ -307,16 +308,16 @@ public class JFrameCategory extends javax.swing.JFrame {
             clear();
         } catch (Exception e) {
             MessageUtils.showErrorMessage("Ha ocurrido un error al actualizar la categoria..."
-                + e.getMessage());
+                    + e.getMessage());
         }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // BOTON PARA ELIMINAR
-         try {
-            int option = JOptionPane.showConfirmDialog(rootPane,"Estas seguro de eliminar la categoria?",
-                "CONFIRMAR", JOptionPane.YES_NO_OPTION);
-            if(option == JOptionPane.YES_OPTION){
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de eliminar la categoria?",
+                    "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
                 categoryController.delete(Long.valueOf(jTextFieldId.getText()));
                 MessageUtils.showInfoMessage("Categoria eliminada correctamente...");
                 fillTable();
@@ -343,7 +344,7 @@ public class JFrameCategory extends javax.swing.JFrame {
                 jTextAreaDescription.setText(category.getDescription());
             } catch (Exception e) {
                 MessageUtils.showErrorMessage("ERROR al usar el evento de click"
-                    + e.getMessage());
+                        + e.getMessage());
             }
         }
         jButtonInsert.setEnabled(false);
@@ -385,9 +386,8 @@ public class JFrameCategory extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-        public void fillTable() {
+
+    public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
             jTableCategory.setModel(model);
@@ -411,8 +411,8 @@ public class JFrameCategory extends javax.swing.JFrame {
                     + e.getMessage());
         }
     }
-        
-    public void clear(){
+
+    public void clear() {
         jTextFieldId.setText("");
         jTextFieldName.setText("");
         jTextAreaDescription.setText("");
@@ -420,7 +420,7 @@ public class JFrameCategory extends javax.swing.JFrame {
         jButtonUpdate.setEnabled(false);
         jButtonDelete.setEnabled(false);
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClear;

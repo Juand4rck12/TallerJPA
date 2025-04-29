@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author victus
+ * @author Juan Diego
  */
 public class JFrameExit extends javax.swing.JFrame {
     private IExitController exitController = new ExitController();
@@ -91,6 +91,7 @@ public class JFrameExit extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto SemiCondensed Black", 1, 24)); // NOI18N
         jPanelBackground.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 780, -1));
 
+        jTableExits.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jTableExits.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -103,7 +104,6 @@ public class JFrameExit extends javax.swing.JFrame {
             }
         ));
         jTableExits.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTableExits.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
         jTableExits.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableExitsMouseClicked(evt);
