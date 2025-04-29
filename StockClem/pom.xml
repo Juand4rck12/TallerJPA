@@ -23,13 +23,6 @@
             <email>nicolle_vmelendez@soy.sena.edu.co</email>
         </developer>
     </developers>
-    <repositories>
-        <repository>
-            <id>unknown-jars-temp-repo</id>
-            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -88,4 +81,5 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>co.edu.sena.stockclem.StockClem</exec.mainClass>
     </properties>
+    <name>StockClem</name>
 </project>
