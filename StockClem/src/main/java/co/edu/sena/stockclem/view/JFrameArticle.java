@@ -14,8 +14,11 @@ import co.edu.sena.stockclem.model.Presentation;
 import co.edu.sena.stockclem.model.Supplier;
 import javax.swing.JOptionPane;
 import co.edu.sena.stockclem.utils.MessageUtils;
+import co.edu.sena.stockclem.utils.SwingUtils;
 import java.awt.Color;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.function.Function;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,8 +39,10 @@ public class JFrameArticle extends javax.swing.JFrame {
      */
     public JFrameArticle() {
         initComponents();
-        fillTable();
-        fillComboBox();
+        fillArticleTable();
+//        fillTable();
+        fillArticleComboBox();
+//        fillComboBox();
     }
 
     /**
@@ -529,15 +534,40 @@ public class JFrameArticle extends javax.swing.JFrame {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }
+        
+    public void fillArticleTable() {
+        try {
+            LinkedHashMap<String, Function<Article, Object>> cols = new LinkedHashMap<>();
+            cols.put("ID", Article::getIdArticle);
+            cols.put("Nombre", Article::getName);
+            cols.put("Cantidad", Article::getQuantity);
+            cols.put("Presentación", a -> a.getIdPresentation().getDescription());
+            cols.put("Categoria", a -> a.getIdCategory().getDescription());
+            cols.put("Proveedor", a -> a.getIdSupplier().getName());
+            SwingUtils.fillTable(jTableArticle, articleController.findAll(), cols);
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ocurrio un error al rellenar la tabla " + e.getMessage());
+        }
+    }
+        
+    public void fillArticleComboBox() {
+        try {
+            SwingUtils.fillComboBox(jComboBoxIdPresentation, presentationController.findAll());
+            SwingUtils.fillComboBox(jComboBoxIdCategory, categoryController.findAll());
+            SwingUtils.fillComboBox(jComboBoxIdSupplier, supplierController.findAll());
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ocurrio un error al llenar los JComboBox " + e.getMessage());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBoxIdCategory;
-    private javax.swing.JComboBox<String> jComboBoxIdPresentation;
-    private javax.swing.JComboBox<String> jComboBoxIdSupplier;
+    private javax.swing.JComboBox<Category> jComboBoxIdCategory;
+    private javax.swing.JComboBox<Presentation> jComboBoxIdPresentation;
+    private javax.swing.JComboBox<Supplier> jComboBoxIdSupplier;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelCantidad;
     private javax.swing.JLabel jLabelCloseWindow;

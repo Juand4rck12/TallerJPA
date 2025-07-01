@@ -8,9 +8,14 @@ import co.edu.sena.stockclem.model.Article;
 import co.edu.sena.stockclem.model.Entry;
 import co.edu.sena.stockclem.utils.ConvertUtils;
 import co.edu.sena.stockclem.utils.MessageUtils;
+import co.edu.sena.stockclem.utils.SwingUtils;
 import java.awt.Color;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -31,8 +36,9 @@ public class JFrameEntry extends javax.swing.JFrame {
      */
     public JFrameEntry() {
         initComponents();
-        fillTable();
-        fillComboBox();
+        fillEntryTable();
+        fillEntryCombo();
+//        fillComboBox();
     }
 
     /**
@@ -446,6 +452,22 @@ public class JFrameEntry extends javax.swing.JFrame {
         jTableEntry.clearSelection();
     }
     
+    public void fillEntryTable() {
+        try {
+            LinkedHashMap<String, Function<Entry, Object>> cols = new LinkedHashMap<>();
+            cols.put("ID", Entry::getIdEntry);
+            cols.put("Sena code", Entry::getSenaCode);
+            cols.put("Entry date", e -> ConvertUtils.dateToString(e.getDate()));
+            cols.put("Expiry Date", e -> ConvertUtils.dateToString(e.getExpirationDate()));
+            cols.put("Quantity", e -> e.getQuantity());
+            cols.put("Article name", e -> e.getIdArticle().getName());
+            
+            SwingUtils.fillTable(jTableEntry, entryController.findAll(), cols);
+        } catch (Exception ex) {
+            MessageUtils.showErrorMessage("Ocurrio un error al llenar la tabla");
+        }
+    }
+    
     public void fillTable() {
         try {
             DefaultTableModel model = new DefaultTableModel();
@@ -477,6 +499,15 @@ public class JFrameEntry extends javax.swing.JFrame {
         }
     }
     
+    public void fillEntryCombo() {
+        try {
+            SwingUtils.fillComboBox(jComboBoxIdArticle, articleController.findAll());
+        } catch (Exception ex) {
+            MessageUtils.showErrorMessage("ha ocurrido un error al llenar el combo de articulos" +
+                                          ex.getMessage());
+        }
+    }
+    
     public void fillComboBox() {
         try {
             List<Article> articles = articleController.findAll();
@@ -501,7 +532,7 @@ public class JFrameEntry extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBoxIdArticle;
+    private javax.swing.JComboBox<Article> jComboBoxIdArticle;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelCloseWindow;
     private javax.swing.JLabel jLabelDateEnter;
