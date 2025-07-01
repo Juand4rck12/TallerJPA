@@ -455,16 +455,16 @@ public class JFrameEntry extends javax.swing.JFrame {
     public void fillEntryTable() {
         try {
             LinkedHashMap<String, Function<Entry, Object>> cols = new LinkedHashMap<>();
-            cols.put("ID", Entry::getIdEntry);
-            cols.put("Sena code", Entry::getSenaCode);
-            cols.put("Entry date", e -> ConvertUtils.dateToString(e.getDate()));
-            cols.put("Expiry Date", e -> ConvertUtils.dateToString(e.getExpirationDate()));
-            cols.put("Quantity", e -> e.getQuantity());
-            cols.put("Article name", e -> e.getIdArticle().getName());
+            cols.put("ID", e -> String.valueOf(e.getIdEntry()));
+            cols.put("Codigo sena", e -> String.valueOf(e.getSenaCode()));
+            cols.put("Fecha de entrada", e -> ConvertUtils.dateToString(e.getDate()));
+            cols.put("Fecha de vencimiento", e -> ConvertUtils.dateToString(e.getExpirationDate()));
+            cols.put("Cantidad", e -> String.valueOf(e.getQuantity()));
+            cols.put("Nombre articulo", e -> e.getIdArticle().getName());
             
             SwingUtils.fillTable(jTableEntry, entryController.findAll(), cols);
-        } catch (Exception ex) {
-            MessageUtils.showErrorMessage("Ocurrio un error al llenar la tabla");
+        } catch (Exception e) {
+            MessageUtils.showErrorMessage("Ocurrio un error al llenar la tabla " + e.getMessage());
         }
     }
     

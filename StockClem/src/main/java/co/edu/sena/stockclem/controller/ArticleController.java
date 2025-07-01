@@ -5,110 +5,121 @@ import co.edu.sena.stockclem.persistence.DAOFactory;
 import co.edu.sena.stockclem.persistence.EntityManagerHelper;
 import java.util.List;
 
-/**
- * date :24/04/2025
- * @author Esteban Colorado Vargas 
- * objetivo: crear los controladores para Article
- */
 public class ArticleController implements IArticleController {
+    
+    
+    // —————————————————————————————————————————————
+    // Métodos auxiliares privados para centralizar validaciones
+    // —————————————————————————————————————————————
+
+    /**
+     * Valida los campos de negocio de Article.
+     * @param article Objeto a validar
+     * @param isNew   true para insert, false para update
+     * @throws Exception si alguna regla falla
+     */
+    private void validateArticle(Article article, boolean isNew) throws Exception {
+        if (article == null) {
+            throw new Exception("El artículo es obligatorio.");
+        }
+        if (article.getName() == null || article.getName().isBlank()) {
+            throw new Exception("El nombre del artículo es obligatorio.");
+        }
+        if (article.getQuantity() <= 0) {
+            throw new Exception("La cantidad debe ser mayor a 0.");
+        }
+        if (article.getIdPresentation() == null) {
+            throw new Exception("La presentación es obligatoria.");
+        }
+        if (article.getIdCategory() == null) {
+            throw new Exception("La categoría es obligatoria.");
+        }
+        if (article.getIdSupplier() == null) {
+            throw new Exception("El proveedor es obligatorio.");
+        }
+        if (isNew && article.getIdArticle() != null) {
+            Article exists = DAOFactory.getArticleDAO().findById(article.getIdArticle());
+            if (exists != null) {
+                throw new Exception("Ya existe un artículo con ese ID.");
+            }
+        }
+    }
+
+    /**
+     * Verifica que exista un Article con el ID dado.
+     * @param id Identificador del artículo
+     * @throws Exception si id es null/0 o no se encuentra el artículo
+     */
+    private void validateExists(Long id) throws Exception {
+        if (id == null || id == 0) {
+            throw new Exception("El ID del artículo es obligatorio.");
+        }
+        Article found = DAOFactory.getArticleDAO().findById(id);
+        if (found == null) {
+            throw new Exception("No existe un artículo con ID " + id + ".");
+        }
+    }
 
     @Override
     public void insert(Article article) throws Exception {
-        if (article == null) {
-            throw new Exception("El articulo es obligatorio...");
-        }
-        if ("".equals(article.getName())) {
-            throw new Exception("El nombre del articulo es obligatorio...");
-        }
-        if (article.getQuantity() <= 0) {
-            throw new Exception("La cantidad debe ser mayor a 0...");
-        }
-        //FKS
-        if (article.getIdPresentation() == null) {
-            throw new Exception("El id de la presentacion es obligatorio...");
-        }
-        if (article.getIdCategory() == null) {
-            throw new Exception("El id de categoria es obligatorio...");
-        }
-        if (article.getIdSupplier() == null) {
-            throw new Exception("El id del proovedor es obligatorio...");
-        }
-        //
-        if (article.getIdArticle() != null) {
-            Article articleExits = DAOFactory.getArticleDAO().findById(article.getIdArticle());
-            if (articleExits != null) {
-                throw new Exception("Ya existe un articulo con ese id...");
-            }
-        }
-        //INSERTAR
+        // 1) Validaciones de negocio
+        validateArticle(article, true);
+
+        // 2) Transacción y persistencia
         EntityManagerHelper.beginTransaction();
-        DAOFactory.getArticleDAO().insert(article);
-        EntityManagerHelper.commit();
-        EntityManagerHelper.closeEntityManager();
+        try {
+            DAOFactory.getArticleDAO().insert(article);
+            EntityManagerHelper.commit();
+        } catch (Exception ex) {
+            EntityManagerHelper.rollback();
+            throw new Exception("Error al insertar artículo: " + ex.getMessage(), ex);
+        } finally {
+            EntityManagerHelper.closeEntityManager();
+        }
     }
 
     @Override
     public void update(Article article) throws Exception {
-        if (article == null) {
-            throw new Exception("El articulo es obligatorio...");
-        }
-        if ("".equals(article.getName())) {
-            throw new Exception("El nombre del articulo es obligatorio...");
-        }
-        if (article.getQuantity() < 0) {
-            throw new Exception("La cantidad no puede ser inferior a 0...");
-        }
-        //FKS
-        if (article.getIdPresentation() == null) {
-            throw new Exception("El id de la presentacion es obligatorio...");
-        }
-        if (article.getIdCategory() == null) {
-            throw new Exception("El id de categoria es obligatorio...");
-        }
-        if (article.getIdSupplier() == null) {
-            throw new Exception("El id del proovedor es obligatorio...");
-        }
-        //
-        Article articleExits = DAOFactory.getArticleDAO().findById(article.getIdArticle());
-        if (articleExits == null) {
-            throw new Exception("No existe el articulo...");
-        }
-        // ACTUALIZAR
-        articleExits.setName(article.getName());
-        articleExits.setQuantity(article.getQuantity());
-        articleExits.setPhoto(article.getPhoto());
-        articleExits.setTechnicalSheet(article.getTechnicalSheet());
-        articleExits.setIdPresentation(article.getIdPresentation());
-        articleExits.setIdCategory(article.getIdCategory());
-        articleExits.setIdSupplier(article.getIdSupplier());
+        // 1) Validaciones de negocio
+        validateArticle(article, false);
+        validateExists(article.getIdArticle());
+
+        // 2) Transacción y merge
         EntityManagerHelper.beginTransaction();
-        DAOFactory.getArticleDAO().update(article);
-        EntityManagerHelper.commit();
-        EntityManagerHelper.closeEntityManager();
+        try {
+            // opción: merge directo de 'article'
+            DAOFactory.getArticleDAO().update(article);
+            EntityManagerHelper.commit();
+        } catch (Exception ex) {
+            EntityManagerHelper.rollback();
+            throw new Exception("Error al actualizar artículo: " + ex.getMessage(), ex);
+        } finally {
+            EntityManagerHelper.closeEntityManager();
+        }
     }
 
     @Override
     public void delete(Long id) throws Exception {
-        if (id == 0) {
-            throw new Exception("El id del articulo es obligatorio para eliminarlo...");
-        }
-        Article articleExits = DAOFactory.getArticleDAO().findById(id);
-        if (articleExits == null) {
-            throw new Exception("No existe el articulo...");
-        }
-        
-        // ELIMINAR
+        // 1) Validar existencia
+        validateExists(id);
+
+        // 2) Transacción y eliminación
         EntityManagerHelper.beginTransaction();
-        DAOFactory.getArticleDAO().delete(articleExits);
-        EntityManagerHelper.commit();
-        EntityManagerHelper.closeEntityManager();
+        try {
+            Article toDelete = DAOFactory.getArticleDAO().findById(id);
+            DAOFactory.getArticleDAO().delete(toDelete);
+            EntityManagerHelper.commit();
+        } catch (Exception ex) {
+            EntityManagerHelper.rollback();
+            throw new Exception("Error al eliminar artículo: " + ex.getMessage(), ex);
+        } finally {
+            EntityManagerHelper.closeEntityManager();
+        }
     }
 
     @Override
     public Article findById(Long id) throws Exception {
-        if (id == 0) {
-            throw new Exception("el documento es obligatorio...");
-        }
+        validateExists(id);
         return DAOFactory.getArticleDAO().findById(id);
     }
 
@@ -116,4 +127,5 @@ public class ArticleController implements IArticleController {
     public List<Article> findAll() throws Exception {
         return DAOFactory.getArticleDAO().findAll();
     }
+
 }
